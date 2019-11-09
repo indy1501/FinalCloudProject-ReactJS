@@ -6,6 +6,8 @@ import "./FileStore.css";
 import cognitoUtils from '../Utilities/CognitoDetails'
 //import appconfig from '../Config/appconfig'
 import { fileServices } from '../services/fileServices'
+import { ChatBot } from 'aws-amplify-react';
+import Chatbot from './Chatbot';
 
 class FileStore extends Component {
 
@@ -61,6 +63,14 @@ class FileStore extends Component {
           });
     }    
          
+    handleComplete(err, confirmation) {
+        if (err) {
+          alert('Bot conversation failed')
+          return;
+        }
+        //alert('Success: ' + JSON.stringify(confirmation, null, 2));
+        return 'Event booked. Thank you! What would you like to do next?';
+    }
 
     s3fileupload(){
         const formData = new FormData();
@@ -238,7 +248,7 @@ class FileStore extends Component {
             <div className="row">
             <p className="App-intro">.</p>
             </div>
-            <div className="row">
+            <div className="row">            
                 <ReactTable
                 columns={columns}
                 data={this.state.filesdata}
@@ -247,6 +257,15 @@ class FileStore extends Component {
                 >
                 </ReactTable>
             </div>
+            <Chatbot />            
+            {/* <ChatBot
+                title="My React Bot"
+                botName="EventBookingBot"
+                welcomeMessage="Welcome, how can I help you today?"
+                onComplete={this.handleComplete.bind(this)}
+                voiceEnabled={true}
+                clearOnComplete={true}
+            /> */}
         </div>
           
         );
