@@ -1,5 +1,5 @@
 import React, { Component }  from "react";
-import { Button, FormControl, ControlLabel, Col, Form, FormGroup, Label} from "react-bootstrap";
+import { Button, FormControl, ControlLabel, Col, Form, FormGroup, Label, FormLabel} from "react-bootstrap";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -40,7 +40,7 @@ class CreateEvent extends Component {
         <form onSubmit={this.handleSubmit}>
         <FormGroup row>
           <Col sm={6}  style={{textAlign: "right"}}>
-          <ControlLabel>Event Name</ControlLabel>
+          <FormLabel>Event Name</FormLabel>
           </Col>
           <Col sm={6}  style={{textAlign: "left"}}>
             <input type="text" name="eventname" id="eventname" onChange={this.handleChange} />
@@ -48,7 +48,7 @@ class CreateEvent extends Component {
         </FormGroup>
         <FormGroup row>
           <Col sm={6}  style={{textAlign: "right"}}>
-          <ControlLabel>Event Location</ControlLabel>
+          <FormLabel>Event Location</FormLabel>
           </Col>
           <Col sm={6}  style={{textAlign: "left"}}>
             <input type="text" name="eventlocation" id="eventlocation" onChange={this.handleChange} />
@@ -56,7 +56,7 @@ class CreateEvent extends Component {
         </FormGroup>
         <FormGroup row>
         <Col sm={6}  style={{textAlign: "right"}}>
-          <ControlLabel>Event Date</ControlLabel>
+          <FormLabel>Event Date</FormLabel>
             </Col>
             <Col sm={6}  style={{textAlign: "left"}}>
             <DatePicker
@@ -69,7 +69,7 @@ class CreateEvent extends Component {
         </FormGroup>
         <FormGroup row>
           <Col sm={6}  style={{textAlign: "right"}}>
-          <ControlLabel>Event Description</ControlLabel>
+          <FormLabel>Event Description</FormLabel>
           </Col>
           <Col sm={6}  style={{textAlign: "left"}}>
             <textarea name="description" id="description" onChange={this.handleChange} />
