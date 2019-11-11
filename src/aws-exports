@@ -1,0 +1,8 @@
+REACT_APP_region=us-east-2
+REACT_APP_userPool=us-east-2_czDZFEgfI
+REACT_APP_userPoolBaseUri=https://storageapp.auth.us-east-2.amazoncognito.com
+REACT_APP_clientId=7rt07fe4ovcpqb6tdbrrajechq
+REACT_APP_callbackUri= http://localhost:3000/FileStore
+REACT_APP_signoutUri= http://localhost:3000
+REACT_APP_cloudFrontDomainName=https://d209zix1kljzh4.cloudfront.net
+REACT_APP_endPointUrl=http://localhost:8081

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Nav, Navbar, NavItem } from "react-bootstrap";
 import Routes from "./Routes";
-import "./App.css";
+//import "./App.css";
 import cognitoUtils from './Utilities/CognitoDetails'
 
 class App extends Component {
@@ -31,17 +31,17 @@ class App extends Component {
   };
     
     return (
-      <div className="App container">
-        <Navbar fluid collapseOnSelect style={{backgroundColor: "#85c1e9"}}>
-          <Navbar.Header>
+      <div >
+        { 
+        // <Navbar fluid collapseOnSelect style={{backgroundColor: "#85c1e9"}}>
+        <Navbar bg="light" variant="light">
             <Navbar.Brand>
               <Link to="/">StorePot</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
-          </Navbar.Header>
           
-          <Navbar.Collapse>
-            <Nav pullRight>
+          <Navbar.Collapse className="justify-content-end">
+            <Nav>
             {
               this.state.isUserLoggedIn
             ? <NavItem onClick={this.onLogOut}>Logout</NavItem>
@@ -49,7 +49,7 @@ class App extends Component {
             }
             </Nav>
           </Navbar.Collapse>
-        </Navbar>
+        </Navbar> }
         <Routes childProps={childProps} />
       </div>
     );

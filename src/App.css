@@ -22,5 +22,7 @@
 }
 
 .App-link {
-  color: #09d3ac;
+  /* color: #09d3ac; */
+  color: white;
+  font-size: calc(10px + 2vmin);
 }
