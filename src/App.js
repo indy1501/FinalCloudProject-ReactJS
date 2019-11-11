@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Nav, Navbar, NavItem } from "react-bootstrap";
+import { Nav, Navbar } from "react-bootstrap";
 import Routes from "./Routes";
 //import "./App.css";
 import cognitoUtils from './Utilities/CognitoDetails'
@@ -35,17 +35,17 @@ class App extends Component {
         { 
         // <Navbar fluid collapseOnSelect style={{backgroundColor: "#85c1e9"}}>
         <Navbar bg="light" variant="light">
-            <Navbar.Brand>
-              <Link to="/">StorePot</Link>
+            <Navbar.Brand as="h2">
+              <Link to="/" ><a style={{ fontSize: 30}}> StorePot</a></Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           
           <Navbar.Collapse className="justify-content-end">
-            <Nav>
+            <Nav >
             {
               this.state.isUserLoggedIn
-            ? <NavItem onClick={this.onLogOut}>Logout</NavItem>
-            : (<NavItem href={cognitoUtils.getCognitoSignInUri()}>Sign In</NavItem>)
+            ? <Nav.Link onClick={this.onLogOut}>Logout</Nav.Link>
+            : (<Nav.Link href={cognitoUtils.getCognitoSignInUri()} style={{ fontSize: 18}}>Sign In</Nav.Link>)
             }
             </Nav>
           </Navbar.Collapse>
