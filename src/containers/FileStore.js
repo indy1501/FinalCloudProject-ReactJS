@@ -6,7 +6,7 @@ import "./FileStore.css";
 import cognitoUtils from '../Utilities/CognitoDetails'
 //import appconfig from '../Config/appconfig'
 import { fileServices } from '../services/fileServices'
-import { ChatBot } from 'aws-amplify-react';
+//import { ChatBot } from 'aws-amplify-react';
 import Chatbot from './Chatbot';
 
 class FileStore extends Component {
