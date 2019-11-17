@@ -2,13 +2,16 @@ import React, { PureComponent } from 'react'
 import { Row, Col, Container, Card, Button } from "react-bootstrap";
 import { ChatBot } from 'aws-amplify-react';
 import Events from './Events';
+import { fileServices } from '../../services/fileServices'
 
 class UserEventView extends PureComponent {
     constructor(props) {
         super(props)
-
+        this.file = null;
         this.state = {
-
+            userName:"Sneha",
+            userEmail:"sneha",
+            description:"User Credit Card"
         }
     }
     handleComplete(err, confirmation) {
@@ -19,6 +22,49 @@ class UserEventView extends PureComponent {
         //alert('Success: ' + JSON.stringify(confirmation, null, 2));
         return 'Event booked. Thank you! What would you like to do next?';
     }
+    handleFileChange = event => {
+        this.file = event.target.files[0];
+    }    
+    handleSubmit = async event => {
+        event.preventDefault();
+        this.s3fileupload();
+    }
+    s3fileupload(){
+        const formData = new FormData();
+        formData.append('file', this.file);
+        const options = {
+            method: 'POST',
+            body: formData,
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        };
+        delete options.headers['Content-Type'];
+
+        fetch(`${process.env.REACT_APP_endPointUrl}/api/fileupload`, options)
+        .then(response => {
+            return response.json();
+          }).then(jsonResponse => {
+            //this.getFile(jsonResponse.imageUrl,jsonResponse.fileName, this.state.userName, this.state.userEmail, this.state.description);
+            //this.storefiledata(jsonResponse.imageUrl,jsonResponse.fileName, this.state.userName, this.state.userEmail, this.state.description);
+            console.log(jsonResponse);
+          }).catch (error => {
+            console.log(error)
+          })
+    }
+
+    storefiledata(imageurl, filename, username, email, description){
+        fileServices.storefiledata(imageurl, filename, username, email, description)
+        .then(response => {
+            console.log(response);
+            //this.getFilesData();
+            this.setState({
+                file: null,
+                description: ""
+            })
+        });
+    }
+    
     render() {
         return (
             <div>
