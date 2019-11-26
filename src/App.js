@@ -34,7 +34,7 @@ class App extends Component {
       <div >
         { 
         // <Navbar fluid collapseOnSelect style={{backgroundColor: "#85c1e9"}}>
-        <Navbar bg="light" variant="light">
+        <Navbar bg="dark" variant="dark">
             <Navbar.Brand as="h2">
               <Link to="/" style={{ fontSize: 30}}> EventSync</Link>
             </Navbar.Brand>
@@ -44,7 +44,7 @@ class App extends Component {
             <Nav >
             {
               this.state.isUserLoggedIn
-            ? <Nav.Link onClick={this.onLogOut}>Logout</Nav.Link>
+            ? <Nav.Link onClick={this.onLogOut} style={{ fontSize: 18}}>Logout</Nav.Link>
             : (<Nav.Link href={cognitoUtils.getCognitoSignInUri()} style={{ fontSize: 18}}>Sign In</Nav.Link>)
             }
             </Nav>
