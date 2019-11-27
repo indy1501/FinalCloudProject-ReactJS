@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import {  Button, Card, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { eventService } from '../../services/EventService';
+import AttributeRender from '../AttributeRender';
 
 class AdminView extends PureComponent {
     constructor(props) {
@@ -17,6 +18,7 @@ class AdminView extends PureComponent {
     }
     componentDidMount() {
         let userEmail = sessionStorage.getItem("userEmail")
+        //let userEmail = "rashmisarode92@gmail.com"
         console.log(userEmail)
         this.setState({
             user: userEmail
@@ -43,8 +45,9 @@ class AdminView extends PureComponent {
                 console.log("Failed to fetch data from server, reason is : ", reason);
             });
     }
-    onDelete() {
-        eventService.deleteEvent(this.state.user, this.state.userEventData.business_id)
+    onDelete(event_id) {
+        eventService.deleteEvent(this.state.user, event_id)
+        console.log(this.state.user, event_id)
             .then(json => {
                 console.log(json);
                 this.getUserEvent(this.state.user)
@@ -57,7 +60,7 @@ class AdminView extends PureComponent {
     render() {
         const { hasEvent } = this.state;
         const { userEventData } = this.state;
-        const businessUpdateURL = `/updateBusiness/${this.state.userEventData.business_id}`
+        //const businessUpdateURL = `/updateBusiness/${this.state.userEventData.event_id}`
         return (
             <div>
                 <Row style={{ display: "block" }}>
@@ -83,30 +86,39 @@ class AdminView extends PureComponent {
                                    
                                 </Card.Body>
                             </Card>
-                            <Card >
-                                <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
-                                <Card.Body>
-                                    <h2>{userEventData.event_name}</h2>
-                                    <Card.Header>{userEventData.location}</Card.Header>
-                                    <Card.Subtitle className="mb-2 text-muted">{userEventData.address} {userEventData.city} {userEventData.state} {userEventData.postal_code}</Card.Subtitle>
-                                </Card.Body>
+                            {
+                                userEventData && userEventData.map(value => {
+                                    return (<Card style={{ marginTop: "20px" }} key={value.event_id}>
+                                        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+                                        <Card.Body>
+                                            <h2>{value.event_name}</h2>
+                                            <h3>{value.location}</h3>
+                                            <Card.Subtitle className="mb-2 text-muted">{value.address} {value.city} {value.state} {value.postal_code}</Card.Subtitle>
+                                        </Card.Body>
+        
+                                        <Card.Body>
+                                            <Card.Title>Categories : </Card.Title>
+                                            <Card.Text>{value.categories}</Card.Text>
+                                             {
+        
+                                                /* userEventData.categories && userEventData.categories.map(value => {
+                                                    return (<Card.Text key={value}>&nbsp; {value} &nbsp;  <TiTick style={{ fontStyle: "Bold", color: "green" }} /> </Card.Text>)
+                                                }) */
+                                            }
+                                        </Card.Body>
+                                        <AttributeRender attributes={value.attributes.BusinessParking}></AttributeRender>
+                                        <Card.Body>
+                                            <Button variant="outline-danger" onClick={e=> this.onDelete(value.event_id)}> Delete </Button>
+                                            {
 
-                                <Card.Body>
-                                    <Card.Title>Categories : </Card.Title>
-                                    <Card.Text>{userEventData.categories}</Card.Text>
-                                     {
-
-                                        /* userEventData.categories && userEventData.categories.map(value => {
-                                            return (<Card.Text key={value}>&nbsp; {value} &nbsp;  <TiTick style={{ fontStyle: "Bold", color: "green" }} /> </Card.Text>)
-                                        }) */
-                                    }
-                                </Card.Body>
-                                <Card.Body>
-                                    <Button variant="outline-danger" onClick={this.onDelete}> Delete </Button>
-                                    <Link to={businessUpdateURL}><Button variant="outline-primary" style={{ marginLeft: "30px" }}>Update </Button></Link>
-                                </Card.Body>
-
-                            </Card>
+                                            }
+                                            <Link to={`/UpdateEvent/${value.event_id}`}><Button variant="outline-primary" style={{ marginLeft: "30px" }}>Update </Button></Link>
+                                        </Card.Body>
+        
+                                    </Card>)
+                                })
+                            }
+                            
                             </div> 
                         }
 

@@ -36,7 +36,7 @@ class App extends Component {
         // <Navbar fluid collapseOnSelect style={{backgroundColor: "#85c1e9"}}>
         <Navbar bg="dark" variant="dark">
             <Navbar.Brand as="h2">
-              <Link to="/" style={{ fontSize: 30}}> EventSync</Link>
+              <Link to="/" style={{ fontSize: 30, color: "white"}}> EventSync</Link>
             </Navbar.Brand>
             <Navbar.Toggle />
           

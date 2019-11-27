@@ -27,7 +27,7 @@ class RedirectPage extends PureComponent {
                     userName: result.user.userName,
                     userEmail: result.user.email
                 }, function () {
-                    this.getFilesData();
+                    //this.getFilesData();
                 })
                 const grp = result.user.groups;
                 if (grp) {

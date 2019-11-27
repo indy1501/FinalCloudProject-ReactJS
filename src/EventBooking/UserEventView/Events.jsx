@@ -14,7 +14,7 @@ class Events extends PureComponent {
     render() {
         return (
 
-            <Card style={{ width: '21rem' }}>
+            <Card style={{ width: '22rem', marginTop: 20, marginBottom: 20 }}>
                 <Card.Img variant="top" src="holder.js/100px180" />
                 <Card.Body>
                     <Card.Title>{this.props.eventData.event_name}</Card.Title>

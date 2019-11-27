@@ -14,19 +14,32 @@ class CreateEvent extends PureComponent {
             city: "",
             postalCode: "",
             cats: ["Active Life"],
-            finalSelected: []
+            finalSelected: [],
+            garage: false,
+            lot: false,
+            street: false,
+            valet: false,
+            validated: false
         }
         this.onSubmit = this.onSubmit.bind(this)
         this.updateName = this.updateName.bind(this)
+        this.updateLocation = this.updateLocation.bind(this)
         this.updateAddress = this.updateAddress.bind(this)
         this.updateState = this.updateState.bind(this)
         this.updateCity = this.updateCity.bind(this)
         this.updatePostal = this.updatePostal.bind(this)
+        this.updateGarage = this.updateGarage.bind(this)
+        this.updateLot = this.updateLot.bind(this)
+        this.updateStreet = this.updateStreet.bind(this)
+        this.updateValet = this.updateValet.bind(this)
+        this.updateValidated = this.updateValidated.bind(this)
     }
     onSubmit() {
         let userEmail = sessionStorage.getItem("userEmail")
-        console.log(`userEmail: ${userEmail}`)
-        eventService.createEvent(userEmail, this.state.name, this.state.finalSelected, this.state.address, this.state.state, this.state.city, this.state.postalCode)
+        //let userEmail = "rashmisarode92@gmail.com"
+        console.log(`userEmail: ${userEmail}`, this.state.garage, this.state.street, this.state.validated, this.state.lot, this.state.valet)
+        eventService.createEvent(userEmail, this.state.name, this.state.location, this.state.finalSelected, this.state.address, this.state.state,
+            this.state.city, this.state.postalCode, this.state.garage, this.state.street, this.state.validated, this.state.lot, this.state.valet )
             .then(json => {
                 console.log(json);
             })
@@ -37,6 +50,11 @@ class CreateEvent extends PureComponent {
     updateName(event) {
         this.setState({
             name: event.target.value
+        })
+    }
+    updateLocation(event) {
+        this.setState({
+            location: event.target.value
         })
     }
     updateAddress(event) {
@@ -59,6 +77,32 @@ class CreateEvent extends PureComponent {
             postalCode: event.target.value
         })
     }
+    updateGarage(event) {
+        console.log(event.target.checked)
+        this.setState({
+            garage: event.target.checked
+        })
+    }
+    updateLot(event) {
+        this.setState({
+            lot: event.target.checked
+        })
+    }
+    updateStreet(event) {
+        this.setState({
+            street: event.target.checked
+        })
+    }
+    updateValet(event) {
+        this.setState({
+            valet: event.target.checked
+        })
+    }
+    updateValidated(event) {
+        this.setState({
+            validated: event.target.checked
+        })
+    }
 
     render() {
         return (
@@ -75,6 +119,13 @@ class CreateEvent extends PureComponent {
                                 <Form.Control type="text" placeholder="Enter Name of Event" value={this.state.name} onChange={this.updateName} />
                                 <Form.Control.Feedback type="invalid">
                                     Please provide a valid name.
+                            </Form.Control.Feedback>
+                            </Form.Group>
+                            <Form.Group controlId="location">
+                                <Form.Label>Address</Form.Label>
+                                <Form.Control type="text" placeholder="Enter Location" value={this.state.location} onChange={this.updateLocation} />
+                                <Form.Control.Feedback type="invalid">
+                                    Please provide a valid location.
                             </Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group controlId="exampleForm.ControlSelect2">
@@ -108,13 +159,14 @@ class CreateEvent extends PureComponent {
                                     <option>Martial Arts</option>
                                 </Form.Control>
                             </Form.Group>
+                          
                             <Form.Group controlId="formBasicCheckbox">
                                 <Form.Label>Attributes : Business Parking</Form.Label>
-                                <Form.Check type="checkbox" label="Garage" />
-                                <Form.Check type="checkbox" label="Lot" />
-                                <Form.Check type="checkbox" label="Street" />
-                                <Form.Check type="checkbox" label="Valet" />
-                                <Form.Check type="checkbox" label="Validated" />
+                                <Form.Check type="checkbox" label="Garage" onChange={this.updateGarage}  />
+                                <Form.Check type="checkbox" label="Lot" onChange={this.updateLot} />
+                                <Form.Check type="checkbox" label="Street" onChange={this.updateStreet} />
+                                <Form.Check type="checkbox" label="Valet" onChange={this.updateValet} />
+                                <Form.Check type="checkbox" label="Validated" onChange={this.updateValidated} />
                             </Form.Group>
                             <Form.Group controlId="address">
                                 <Form.Label>Address</Form.Label>
@@ -144,7 +196,7 @@ class CreateEvent extends PureComponent {
                                     Please provide a valid postal code.
                             </Form.Control.Feedback>
                             </Form.Group>
-                            <Button variant="primary" type="submit" onClick={this.onSubmit}>
+                            <Button variant="primary" type="button" onClick={this.onSubmit}>
                                 Submit
                         </Button>
                         </Form>
