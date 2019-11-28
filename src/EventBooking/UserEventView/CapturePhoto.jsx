@@ -8,7 +8,7 @@ class CapturePhoto extends PureComponent {
         super(props)
 
         this.state = {
-            uploadResult:""
+            uploadResult:"No photo uploaded" 
         }
         this.onTakePhoto = this.onTakePhoto.bind(this)
     }
@@ -25,7 +25,7 @@ class CapturePhoto extends PureComponent {
                 .then(json => {
                     console.log(json);
                     this.setState({
-                        uploadResult: "File Uploaded successfully"
+                        uploadResult: "Photo Uploaded successfully"
                     }); 
                 })
                 .catch(reason => {
@@ -38,10 +38,12 @@ class CapturePhoto extends PureComponent {
     render() {
         return (
             <div>
-                <div className="App">
+                <h3 className="text-center" style={{marginTop:30, color: "red"}}>Upload your image by using the camera button</h3>
+                <div className="App" style={{marginTop:30}}>
                     <Camera
                         onTakePhoto={(dataUri) => { this.onTakePhoto(dataUri); }}
                     />
+                    <h5 className="text-center" style={{marginTop:10}}>{this.state.uploadResult}</h5>
                 </div>
             </div>
         )

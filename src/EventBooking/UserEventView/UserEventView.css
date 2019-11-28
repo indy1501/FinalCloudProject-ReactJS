@@ -1,12 +1,12 @@
 /*search box css start here*/
 .search-sec{
-    padding: 2rem;
+    padding: 1rem;
   }
   .search-slt{
     display: block;
     width: 100%;
     font-size: 0.875rem;
-    line-height: 1.5;
+    line-height: 1;
     color: #55595c;
     background-color: #fff;
     background-image: none;

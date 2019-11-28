@@ -163,7 +163,7 @@ class UserEventView extends PureComponent {
                         </div>
                     </section>
                     <Row style={{ marginTop: 10 }}>
-                        <Col xl={7} style={{ border: "1px solid black", margin: 10, borderRadius: 5, marginLeft: 80, height: (window.innerHeight) - 170, overflowY: "scroll" }}>
+                        <Col xl={7} style={{ border: "1px solid black", margin: 10, borderRadius: 5, marginLeft: 80, height: (window.innerHeight) - 250, overflowY: "scroll" }}>
 
                             <Alert variant="primary" style={{ marginTop: 10 }}>
                                 <Alert.Heading>Events</Alert.Heading>

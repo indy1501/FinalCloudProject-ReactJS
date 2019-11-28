@@ -8,6 +8,7 @@ class UpdateEvent extends PureComponent {
         super(props)
 
         this.state = {
+            eventId:"",
             name: "",
             location: "",
             address: "",
@@ -35,10 +36,13 @@ class UpdateEvent extends PureComponent {
         this.updateValet = this.updateValet.bind(this)
         this.updateValidated = this.updateValidated.bind(this)
     }
+    componentDidMount(){
+        
+    }
     onSubmit() {
-        let userEmail = sessionStorage.getItem("userEmail")
-        console.log(`userEmail: ${userEmail}`, this.state.garage, this.state.street, this.state.validated, this.state.lot, this.state.valet)
-        eventService.createEvent(userEmail, this.state.name, this.state.location, this.state.finalSelected, this.state.address, this.state.state,
+        //let userEmail = sessionStorage.getItem("userEmail")
+        //console.log(`userEmail: ${userEmail}`, this.state.garage, this.state.street, this.state.validated, this.state.lot, this.state.valet)
+        eventService.updateEvent(this.state.eventId, this.state.name, this.state.location, this.state.finalSelected, this.state.address, this.state.state,
             this.state.city, this.state.postalCode, this.state.garage, this.state.street, this.state.validated, this.state.lot, this.state.valet )
             .then(json => {
                 console.log(json);
@@ -136,7 +140,7 @@ class UpdateEvent extends PureComponent {
                                     for (var i = 0; i < opts.length; i++) {
                                         var item = opts.item(i);
                                         console.log(item.selected, item.value);
-                                        if (item.selected == true) {
+                                        if (item.selected === true) {
                                             tempArray.push(item.value)
                                         }
                                     }

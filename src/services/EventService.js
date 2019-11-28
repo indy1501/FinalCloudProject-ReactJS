@@ -2,9 +2,11 @@
 
 export const eventService = {
     getAll,
+    getEventByID,
     getSearchData,
     getMoreSearchData,
     createEvent,
+    updateEvent,
     getEventByUserID,
     deleteEvent,
     createEventBooking,
@@ -21,6 +23,16 @@ function getAll() {
     }
     return fetch(`${apiConfig.endpointURL}/events/all`, requestOption).then(res => {
         // console.log(res); 
+        return res.json();
+    })
+}
+function getEventByID(eventId) {
+    const requestOption = {
+        method: 'GET',
+        headers: { "Content-Type": "application/json" }
+    }
+    return fetch(`${apiConfig.endpointURL}/events/${eventId}`, requestOption).then(res => {
+        //console.log(res); 
         return res.json();
     })
 }
@@ -72,6 +84,34 @@ function createEvent(userEmail, name, location, categories, address, city, state
         headers: { "Content-Type": "application/json" }
     }
     return fetch(`${apiConfig.endpointURL}/users/${userEmail}/events`, requestOption).then(res => {
+        //            console.log(res.json());
+        return res.json();
+    })
+}
+function updateEvent(eventId, name, location, categories, address, city, state, postal_code, garage, street, validated, lot, valet) {
+    const requestOption = {
+        method: 'PUT',
+        body: JSON.stringify({
+            "name": name,
+            "location": location,
+            "categories": categories,
+            "address": address,
+            "city": city,
+            "state": state,
+            "postal_code": postal_code,
+            "attributes": {
+                "BusinessParking": {
+                    "garage": garage,
+                    "street": street,
+                    "validated": validated,
+                    "lot": lot,
+                    "valet": valet
+                }
+            }
+        }),
+        headers: { "Content-Type": "application/json" }
+    }
+    return fetch(`${apiConfig.endpointURL}/events/${eventId}`, requestOption).then(res => {
         //            console.log(res.json());
         return res.json();
     })
