@@ -5,7 +5,7 @@ import music from '../../assets/music.jpeg'
 class Events extends PureComponent {
     constructor(props) {
         super(props)
-
+        console.log("data:", props.eventData)
         this.state = {
 
         }
@@ -13,28 +13,18 @@ class Events extends PureComponent {
 
     render() {
         return (
-            <Card>
-                <Card.Body>
-                    <Media>
-                        <img
-                            width={64}
-                            height={64}
-                            className="mr-3"
-                            src={music}
-                            alt="Generic placeholder"
-                        />
-                        <Media.Body>
-                            <h5>Music Event</h5>
-                            <p>
-                                Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque
-                                ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at,
-                                tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla.
-                                Donec lacinia congue felis in faucibus.
-                            </p>
-                        </Media.Body>
-                    </Media>
-                </Card.Body>
 
+            <Card style={{ width: '22rem', marginTop: 20, marginBottom: 20 }}>
+                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Body>
+                    <Card.Title>{this.props.eventData.event_name}</Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">Card Subtitle</Card.Subtitle>
+                    <Card.Text>
+                        Some quick example text to build on the card title and make up the bulk of
+                        the card's content.
+                    </Card.Text>
+                    <Card.Link href="#">Card Link</Card.Link>
+                </Card.Body>
             </Card>
 
         )
