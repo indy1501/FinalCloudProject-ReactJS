@@ -10,7 +10,7 @@ class UserEventView extends PureComponent {
         this.file = null;
         this.state = {
             userName:"Sneha",
-            userEmail:"sneha",
+            userEmail:"sneha11@gmail.com",
             description:"User Credit Card"
         }
     }
@@ -46,25 +46,27 @@ class UserEventView extends PureComponent {
             return response.json();
           }).then(jsonResponse => {
             //this.getFile(jsonResponse.imageUrl,jsonResponse.fileName, this.state.userName, this.state.userEmail, this.state.description);
-            //this.storefiledata(jsonResponse.imageUrl,jsonResponse.fileName, this.state.userName, this.state.userEmail, this.state.description);
+            this.storefiledata(jsonResponse.CreditCardNumber,jsonResponse.ExpiryDate, jsonResponse.Organization, jsonResponse.User, this.state.userEmail);
+            this.deleteFile(jsonResponse.FileName);
             console.log(jsonResponse);
           }).catch (error => {
             console.log(error)
           })
     }
 
-    storefiledata(imageurl, filename, username, email, description){
-        fileServices.storefiledata(imageurl, filename, username, email, description)
+    storefiledata(ccnumber, expirydate, org, user, email){
+        fileServices.storefiledata(ccnumber, expirydate, org, user, email)
         .then(response => {
             console.log(response);
-            //this.getFilesData();
-            this.setState({
-                file: null,
-                description: ""
-            })
         });
     }
-    
+    deleteFile(fileName){
+        fileServices.deleteFile(fileName)
+        .then(response => {
+            console.log(response);
+        })
+    }
+
     render() {
         return (
             <div>

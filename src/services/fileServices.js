@@ -34,20 +34,16 @@ function updateFileData(fileId){
     })
 }
 
-function storefiledata(imageurl, filename, username, email, description){
+function storefiledata(ccnumber, expirydate, org, user, email){
 
-    const url=`${process.env.REACT_APP_endPointUrl}/postusers`;
+    const url=`${process.env.REACT_APP_endPointUrl}/users/`+ email+`/card`;
     return fetch(url, {
             method: 'Post',
             body: JSON.stringify({
-                "Id": uuidv4(),
-                "UserName": username,
-                "Email": email,
-                "FileName":filename,
-                "FileDescription":description,
-                "CreatedAt":new Date().toDateString() + " " + new Date().toLocaleTimeString(),
-                "UpdatedAt":new Date().toDateString() + " " + new Date().toLocaleTimeString(),
-                "Imageurl": imageurl,
+                "card_holder_name": user,
+                "card_number": ccnumber,
+                "expiry_date": expirydate,
+                "organization": org
             }),
             headers: {
                 'Content-Type': 'application/json'
@@ -55,7 +51,7 @@ function storefiledata(imageurl, filename, username, email, description){
         }).then(res => {return res})
 }
 
-function deleteFile(fileId, fileName){
+function deleteFile(fileName){
     const url=`${process.env.REACT_APP_endPointUrl}/api/filedelete`;
     return fetch(url, {
         method: 'Post',
