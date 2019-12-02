@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Button, Card, Row, Col } from 'react-bootstrap';
+import { Button, Card, Row, Col, Modal, Form } from 'react-bootstrap';
 import { eventService } from '../../services/EventService';
 import AttributeRender from '../AttributeRender';
 import { bindActionCreators } from 'redux';
@@ -12,8 +12,9 @@ class RenderEvent extends PureComponent {
             eventId: props.match.params.id,
             userName: "",
             userEmail: "",
-            ticketCount:"",
-            eventData: []
+            ticketCount: "1",
+            eventData: [],
+            modalShow: false
         }
         this.bookEvent = this.bookEvent.bind(this)
     }
@@ -41,21 +42,31 @@ class RenderEvent extends PureComponent {
             });
 
     }
-
-    bookEvent(){
-        eventService.createEventBooking(this.state.eventId,this.state.eventData.event_name,this.state.eventData.location,
-            this.state.eventData.date,this.state.ticketCount,this.state.userEmail)
-        .then(json => {
-            console.log(json);
-            if (Array.isArray(json)) {
-                this.setState({
-                    eventData: json[0],
-                });
-            }
+    setModalShow(value) {
+        this.setState({
+            modalShow: value
         })
-        .catch(reason => {
-            console.log("Failed to fetch data from server, reason is : ", reason);
-        });
+    }
+
+    bookEvent(tickets) {
+        this.setState({
+            ticketCount: tickets
+        })
+
+        eventService.createEventBooking(this.state.eventId, this.state.eventData.event_name, this.state.eventData.location,this.state.eventData.date, this.state.ticketCount, this.state.userEmail)
+            /* console.log(this.state.eventId, this.state.eventData.event_name, this.state.eventData.location,
+                this.state.eventData.date, this.state.ticketCount, this.state.userEmail) */
+            .then(json => {
+                console.log(json);
+                if (Array.isArray(json)) {
+                    this.setState({
+                        eventData: json[0],
+                    });
+                }
+            })
+            .catch(reason => {
+                console.log("Failed to fetch data from server, reason is : ", reason);
+            });
 
     }
 
@@ -72,9 +83,9 @@ class RenderEvent extends PureComponent {
                                     <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
                                     <Card.Body>
                                         <h2>{eventData.event_name && eventData.event_name.toUpperCase()}</h2>
-                                        <h4><a style={{color:"blue"}}>Location :</a> {eventData.location}</h4>
+                                        <h4><a style={{ color: "blue" }}>Location :</a> {eventData.location}</h4>
                                         <Card.Subtitle className="mb-2 text-muted">{eventData.address}, {eventData.city}, {eventData.state} {eventData.postal_code}</Card.Subtitle>
-                                        <h6><a style={{color:"red"}}>Date :</a> {eventData.date} &nbsp;<a style={{color:"red"}}>Time :</a> {eventData.time}</h6>
+                                        <h6><a style={{ color: "red" }}>Date :</a> {eventData.date} &nbsp;&nbsp;<a style={{ color: "red" }}>Time :</a> {eventData.time}</h6>
                                     </Card.Body>
 
                                     <Card.Body>
@@ -88,12 +99,16 @@ class RenderEvent extends PureComponent {
                                         }
                                     </Card.Body>
                                     {
-                                        eventData.attributes && <AttributeRender attributes={eventData.attributes.BusinessParking}></AttributeRender> 
+                                        eventData.attributes && <AttributeRender attributes={eventData.attributes.BusinessParking}></AttributeRender>
                                     }
-                                    
+
                                     <Card.Body>
-                                        
-                                        <Button variant="primary" size="lg" block onClick={this.bookEvent}> Book </Button>
+
+                                        <Button variant="primary" size="lg" block onClick={this.bookEvent} onClick={(e) => this.setModalShow(true)}> Book </Button>
+                                        <BookEventModal
+                                            show={this.state.modalShow}
+                                            onHide={(e) => this.setModalShow(false)}
+                                            onBookEvent={this.bookEvent}></BookEventModal>
                                     </Card.Body>
 
                                 </Card>
@@ -109,3 +124,37 @@ class RenderEvent extends PureComponent {
 }
 
 export default RenderEvent
+
+export const BookEventModal = ({ onBookEvent, ...props }) => {
+    const [ticketText, setTicketText] = React.useState("");
+    return (
+        <Modal
+            {...props}
+            size="lg"
+            aria-labelledby="contained-modal-title-vcenter"
+            centered
+        >
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">
+                    Book Event
+            </Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+               {/*  <textarea style={{ width: "100%", height: "300px", padding: 20 }} value={reviewText} onChange={e => setReviewText(e.target.value)}> </textarea> */}
+                <Form>
+                    <Form.Group as={Row} controlId="formPlaintexttickets">
+                        <Form.Label column sm="3">
+                            Number of Tickets :
+                        </Form.Label>
+                        <Col sm="4">
+                            <Form.Control  placeholder="Tickets" value={ticketText} onChange={e => setTicketText(e.target.value)}/>
+                        </Col>
+                    </Form.Group>
+                </Form>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button variant="outline-success" onClick={e => onBookEvent(ticketText)}>Book</Button>
+            </Modal.Footer>
+        </Modal>
+    );
+}

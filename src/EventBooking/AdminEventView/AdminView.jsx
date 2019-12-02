@@ -47,7 +47,7 @@ class AdminView extends PureComponent {
     }
     onDelete(event_id) {
         eventService.deleteEvent(this.state.user, event_id)
-        console.log(this.state.user, event_id)
+        /* console.log(this.state.user, event_id) */
             .then(json => {
                 console.log(json);
                 this.getUserEvent(this.state.user)

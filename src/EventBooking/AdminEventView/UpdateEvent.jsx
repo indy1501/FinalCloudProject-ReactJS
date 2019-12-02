@@ -1,16 +1,18 @@
 import React, { PureComponent } from 'react'
-import { Card, Form, Button } from 'react-bootstrap'
+import { Card, Form, Button, Col } from 'react-bootstrap'
 import { eventService } from '../../services/EventService'
 import { Link } from 'react-router-dom';
 
 class UpdateEvent extends PureComponent {
     constructor(props) {
         super(props)
-
+        console.log("event ID ", props.match.params.id);
         this.state = {
-            eventId:"",
+            eventId: props.match.params.id,
             name: "",
             location: "",
+            date: "",
+            time: "",
             address: "",
             state: "",
             city: "",
@@ -26,6 +28,8 @@ class UpdateEvent extends PureComponent {
         this.onSubmit = this.onSubmit.bind(this)
         this.updateName = this.updateName.bind(this)
         this.updateLocation = this.updateLocation.bind(this)
+        this.updateDate = this.updateDate.bind(this)
+        this.updateTime = this.updateTime.bind(this)
         this.updateAddress = this.updateAddress.bind(this)
         this.updateState = this.updateState.bind(this)
         this.updateCity = this.updateCity.bind(this)
@@ -37,13 +41,36 @@ class UpdateEvent extends PureComponent {
         this.updateValidated = this.updateValidated.bind(this)
     }
     componentDidMount(){
-        
+        eventService.getEventByID(this.state.eventId)
+        .then(json => {
+            console.log(json);
+            if (Array.isArray(json)) {
+                this.setState({
+                    name: json[0].event_name,
+                    location: json[0].location,
+                    date: json[0].date,
+                    time: json[0].time,
+                    address: json[0].address,
+                    state: json[0].state,
+                    city: json[0].city,
+                    postalCode: json[0].postal_code,
+                    garage: json[0].attributes["BusinessParking"].garage,
+                    lot: false,
+                    street: false,
+                    valet: false,
+                    validated: false
+                });
+            }
+        })
+        .catch(reason => {
+            console.log("Failed to fetch data from server, reason is : ", reason);
+        });
     }
     onSubmit() {
         //let userEmail = sessionStorage.getItem("userEmail")
         //console.log(`userEmail: ${userEmail}`, this.state.garage, this.state.street, this.state.validated, this.state.lot, this.state.valet)
         eventService.updateEvent(this.state.eventId, this.state.name, this.state.location, this.state.finalSelected, this.state.address, this.state.state,
-            this.state.city, this.state.postalCode, this.state.garage, this.state.street, this.state.validated, this.state.lot, this.state.valet )
+            this.state.city, this.state.postalCode, this.state.garage, this.state.street, this.state.validated, this.state.lot, this.state.valet,this.state.date,this.state.time )
             .then(json => {
                 console.log(json);
             })
@@ -59,6 +86,16 @@ class UpdateEvent extends PureComponent {
     updateLocation(event) {
         this.setState({
             location: event.target.value
+        })
+    }
+    updateDate(event) {
+        this.setState({
+            date: event.target.value
+        })
+    }
+    updateTime(event) {
+        this.setState({
+            time: event.target.value
         })
     }
     updateAddress(event) {
@@ -83,27 +120,27 @@ class UpdateEvent extends PureComponent {
     }
     updateGarage(event) {
         this.setState({
-            garage: event.target.selected
+            garage: event.target.checked
         })
     }
     updateLot(event) {
         this.setState({
-            lot: event.target.selected
+            lot: event.target.checked
         })
     }
     updateStreet(event) {
         this.setState({
-            street: event.target.selected
+            street: event.target.checked
         })
     }
     updateValet(event) {
         this.setState({
-            valet: event.target.selected
+            valet: event.target.checked
         })
     }
     updateValidated(event) {
         this.setState({
-            validated: event.target.selected
+            validated: event.target.checked
         })
     }
 
@@ -131,6 +168,17 @@ class UpdateEvent extends PureComponent {
                                     Please provide a valid location.
                             </Form.Control.Feedback>
                             </Form.Group>
+                            <Form.Row style={{ marginTop: "10px" }}>
+                                    <Form.Group as={Col} controlId="formGridDate">
+                                        <Form.Label>Date</Form.Label>
+                                        <Form.Control placeholder="MM/DD/YYYY" value={this.state.date} onChange={this.updateDate}/>
+                                    </Form.Group>
+
+                                    <Form.Group as={Col} controlId="formGridTime">
+                                        <Form.Label>Time</Form.Label>
+                                        <Form.Control placeholder="eg. 22:00 hrs" value={this.state.time} onChange={this.updateTime}/>
+                                    </Form.Group>
+                                </Form.Row>
                             <Form.Group controlId="exampleForm.ControlSelect2">
                                 <Form.Label>Categories</Form.Label>
                                 <Form.Control as="select" multiple onChange={e => {
@@ -199,7 +247,7 @@ class UpdateEvent extends PureComponent {
                                     Please provide a valid postal code.
                             </Form.Control.Feedback>
                             </Form.Group>
-                            <Button variant="primary" type="submit" onClick={this.onSubmit}>
+                            <Button variant="primary" type="button" onClick={this.onSubmit}>
                                 Submit
                         </Button>
                         </Form>

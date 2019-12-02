@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { Card, Form, Button } from 'react-bootstrap'
+import { Card, Form, Button, Col } from 'react-bootstrap'
 import { eventService } from '../../services/EventService'
 import { Link } from 'react-router-dom';
 
@@ -9,6 +9,8 @@ class CreateEvent extends PureComponent {
         this.state = {
             name: "",
             location: "",
+            date: "",
+            time: "",
             address: "",
             state: "",
             city: "",
@@ -24,6 +26,8 @@ class CreateEvent extends PureComponent {
         this.onSubmit = this.onSubmit.bind(this)
         this.updateName = this.updateName.bind(this)
         this.updateLocation = this.updateLocation.bind(this)
+        this.updateDate = this.updateDate.bind(this)
+        this.updateTime = this.updateTime.bind(this)
         this.updateAddress = this.updateAddress.bind(this)
         this.updateState = this.updateState.bind(this)
         this.updateCity = this.updateCity.bind(this)
@@ -39,7 +43,7 @@ class CreateEvent extends PureComponent {
         //let userEmail = "rashmisarode92@gmail.com"
         console.log(`userEmail: ${userEmail}`, this.state.garage, this.state.street, this.state.validated, this.state.lot, this.state.valet)
         eventService.createEvent(userEmail, this.state.name, this.state.location, this.state.finalSelected, this.state.address, this.state.state,
-            this.state.city, this.state.postalCode, this.state.garage, this.state.street, this.state.validated, this.state.lot, this.state.valet )
+            this.state.city, this.state.postalCode, this.state.garage, this.state.street, this.state.validated, this.state.lot, this.state.valet,this.state.date,this.state.time)
             .then(json => {
                 console.log(json);
             })
@@ -55,6 +59,16 @@ class CreateEvent extends PureComponent {
     updateLocation(event) {
         this.setState({
             location: event.target.value
+        })
+    }
+    updateDate(event) {
+        this.setState({
+            date: event.target.value
+        })
+    }
+    updateTime(event) {
+        this.setState({
+            time: event.target.value
         })
     }
     updateAddress(event) {
@@ -110,7 +124,7 @@ class CreateEvent extends PureComponent {
                 <div style={{ margin: "30px" }}>
                     <Link to="/AdminView"> Go Back</Link>
                 </div>
-                <Card style={{ "margin": 100, "marginTop": 30 }}>
+                <Card style={{ "margin": 100, "marginTop": 10 }}>
                     <Card.Body>
 
                         <Form>
@@ -128,6 +142,18 @@ class CreateEvent extends PureComponent {
                                     Please provide a valid location.
                             </Form.Control.Feedback>
                             </Form.Group>
+                            <Form.Row style={{ marginTop: "10px" }}>
+                                    <Form.Group as={Col} controlId="formGridDate">
+                                        <Form.Label>Date</Form.Label>
+                                        <Form.Control placeholder="MM/DD/YYYY" value={this.state.date} onChange={this.updateDate}/>
+                                    </Form.Group>
+
+                                    <Form.Group as={Col} controlId="formGridTime">
+                                        <Form.Label>Time</Form.Label>
+                                        <Form.Control placeholder="eg. 22:00 hrs" value={this.state.time} onChange={this.updateTime}/>
+                                    </Form.Group>
+                                </Form.Row>
+
                             <Form.Group controlId="exampleForm.ControlSelect2">
                                 <Form.Label>Categories</Form.Label>
                                 <Form.Control as="select" multiple onChange={e => {
@@ -159,10 +185,10 @@ class CreateEvent extends PureComponent {
                                     <option>Martial Arts</option>
                                 </Form.Control>
                             </Form.Group>
-                          
+
                             <Form.Group controlId="formBasicCheckbox">
                                 <Form.Label>Attributes : Business Parking</Form.Label>
-                                <Form.Check type="checkbox" label="Garage" onChange={this.updateGarage}  />
+                                <Form.Check type="checkbox" label="Garage" onChange={this.updateGarage} />
                                 <Form.Check type="checkbox" label="Lot" onChange={this.updateLot} />
                                 <Form.Check type="checkbox" label="Street" onChange={this.updateStreet} />
                                 <Form.Check type="checkbox" label="Valet" onChange={this.updateValet} />
@@ -196,7 +222,7 @@ class CreateEvent extends PureComponent {
                                     Please provide a valid postal code.
                             </Form.Control.Feedback>
                             </Form.Group>
-                            <Button variant="primary" type="button" onClick={this.onSubmit}>
+                            <Button variant="primary" type="submit" onClick={this.onSubmit}>
                                 Submit
                         </Button>
                         </Form>

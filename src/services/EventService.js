@@ -60,12 +60,14 @@ function getMoreSearchData(event_type, city, last_key_business_id, last_key_city
     })
 }
 
-function createEvent(userEmail, name, location, categories, address, city, state, postal_code, garage, street, validated, lot, valet) {
+function createEvent(userEmail, name, location, categories, address, city, state, postal_code, garage, street, validated, lot, valet, date, time) {
     const requestOption = {
         method: 'POST',
         body: JSON.stringify({
             "name": name,
             "location": location,
+            "date": date,
+            "time": time,
             "categories": categories,
             "address": address,
             "city": city,
@@ -88,12 +90,14 @@ function createEvent(userEmail, name, location, categories, address, city, state
         return res.json();
     })
 }
-function updateEvent(eventId, name, location, categories, address, city, state, postal_code, garage, street, validated, lot, valet) {
+function updateEvent(eventId, name, location, categories, address, city, state, postal_code, garage, street, validated, lot, valet, date, time) {
     const requestOption = {
         method: 'PUT',
         body: JSON.stringify({
             "name": name,
             "location": location,
+            "date": date,
+            "time": time,
             "categories": categories,
             "address": address,
             "city": city,
@@ -137,15 +141,16 @@ function deleteEvent(userEmail, eventId) {
     }
     return fetch(`${apiConfig.endpointURL}/users/${userEmail}/events/${eventId}`, requestOption)
 }
-function createEventBooking(eventId,eventName,location,date,ticket_count,userEmail) {
+function createEventBooking(eventId, eventName, location, date, ticket_count, userEmail) {
+    console.log(eventId, eventName, location, date, ticket_count, userEmail)
     const requestOption = {
         method: 'POST',
         body: JSON.stringify({
-            "event name": eventName,
-            "location": location,
-            "date": date,
-            "ticket_count": ticket_count,
-            "user_id": userEmail
+            "EventName": eventName,
+            "EventLocation": location,
+            "EventDate": date,
+            "EventTickets": ticket_count,
+            "UserEmail": userEmail
         }),
         headers: { "Content-Type": "application/json" }
     }
@@ -164,17 +169,17 @@ function getEventBookingByUserID(userEmail) {
         return res.json();
     })
 }
-function uploadPhoto(inputFile,userEmail) {
+function uploadPhoto(inputFile, userEmail) {
     const formData = new FormData();
     /* formData.append('inputFile', inputFile, "inputFile.img"); */
     formData.append('inputFile', inputFile, userEmail);
     const requestOption = {
         method: 'POST',
         body: formData,
-       // headers: { "Content-Type": inputFile.type }
+        // headers: { "Content-Type": inputFile.type }
     }
     return fetch(`${apiConfig.endpointURL}/photoUpload/upload_photo`, requestOption).then(res => {
-      console.log(res);
+        console.log(res);
         return res;
     })
 }
