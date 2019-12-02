@@ -14,8 +14,8 @@ class Home extends Component {
             </Alert>
           </Row>
         </Col>
-        <Link to="/UserEventView">User Page for Event Booking</Link>
-        <Link to="/AdminView">Admin Page for Event Booking</Link>
+        {/* <Link to="/UserEventView">User Page for Event Booking</Link>
+        <Link to="/AdminView">Admin Page for Event Booking</Link> */}
       </div>
       // <div className="Home">
       //   <div className="lander">
