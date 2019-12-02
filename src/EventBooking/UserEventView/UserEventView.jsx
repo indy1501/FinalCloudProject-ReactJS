@@ -79,27 +79,29 @@ class UserEventView extends PureComponent {
         delete options.headers['Content-Type'];
 
         fetch(`${process.env.REACT_APP_endPointUrl}/api/fileupload`, options)
-            .then(response => {
-                return response.json();
-            }).then(jsonResponse => {
-                //this.getFile(jsonResponse.imageUrl,jsonResponse.fileName, this.state.userName, this.state.userEmail, this.state.description);
-                //this.storefiledata(jsonResponse.imageUrl,jsonResponse.fileName, this.state.userName, this.state.userEmail, this.state.description);
-                console.log(jsonResponse);
-            }).catch(error => {
-                console.log(error)
-            })
+        .then(response => {
+            return response.json();
+          }).then(jsonResponse => {
+            //this.getFile(jsonResponse.imageUrl,jsonResponse.fileName, this.state.userName, this.state.userEmail, this.state.description);
+            this.storefiledata(jsonResponse.CreditCardNumber,jsonResponse.ExpiryDate, jsonResponse.Organization, jsonResponse.User, this.state.userEmail);
+            this.deleteFile(jsonResponse.FileName);
+            console.log(jsonResponse);
+          }).catch (error => {
+            console.log(error)
+          })
     }
 
-    storefiledata(imageurl, filename, username, email, description) {
-        fileServices.storefiledata(imageurl, filename, username, email, description)
-            .then(response => {
-                console.log(response);
-                //this.getFilesData();
-                this.setState({
-                    file: null,
-                    description: ""
-                })
-            });
+    storefiledata(ccnumber, expirydate, org, user, email){
+        fileServices.storefiledata(ccnumber, expirydate, org, user, email)
+        .then(response => {
+            console.log(response);
+        });
+    }
+    deleteFile(fileName){
+        fileServices.deleteFile(fileName)
+        .then(response => {
+            console.log(response);
+        })
     }
     onSearch() {
         eventService.getSearchData(this.state.Event, this.state.city)

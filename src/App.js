@@ -47,6 +47,7 @@ class App extends Component {
             ? <Nav.Link onClick={this.onLogOut} style={{ fontSize: 18}}>Logout</Nav.Link>
             : (<Nav.Link href={cognitoUtils.getCognitoSignInUri()} style={{ fontSize: 18}}>Sign In</Nav.Link>)
             }
+          
             </Nav>
           </Navbar.Collapse>
         </Navbar> }

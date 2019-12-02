@@ -54,7 +54,8 @@ class UpdateEvent extends PureComponent {
                     state: json[0].state,
                     city: json[0].city,
                     postalCode: json[0].postal_code,
-                    garage: json[0].attributes["BusinessParking"].garage,
+                    /* garage: json[0].attributes["BusinessParking"].garage, */
+                    garage: false,
                     lot: false,
                     street: false,
                     valet: false,
