@@ -1,0 +1,61 @@
+/*search box css start here*/
+.search-sec{
+    padding: 1rem;
+  }
+  .search-slt{
+    display: block;
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1;
+    color: #55595c;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+  }
+  .wrn-btn{
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+    text-transform: capitalize;
+    height: calc(3rem + 2px) !important;
+    border-radius:0;
+  }
+  @media (min-width: 2200px){
+    .search-sec{
+        position: relative;
+        top: -114px;
+        background: rgba(26, 70, 104, 0.51);
+    }
+  }
+  
+  @media (max-width: 9992px){
+    .search-sec{
+        background: white;
+    }
+  }
+  ::-webkit-scrollbar {
+    width: 1px;
+   
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+    
+    background: black
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    /* background: rgb(233, 232, 232); */ 
+    background: black
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(211, 209, 209); 
+    background: black
+  }
+  
