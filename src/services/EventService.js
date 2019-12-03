@@ -154,12 +154,13 @@ function createEventBooking(eventId, eventName, location, date, ticket_count, us
         }),
         headers: { "Content-Type": "application/json" }
     }
-    return fetch(`${apiConfig.endpointURL}/events/${eventId}/booking`, requestOption).then(res => {
+    return fetch(`${apiConfig.endpointURL}/booking`, requestOption).then(res => {
         //            console.log(res.json());
         return res.json();
     })
 }
 function getEventBookingByUserID(userEmail) {
+    console.log(userEmail)
     const requestOption = {
         method: 'GET',
         headers: { "Content-Type": "application/json" }
@@ -172,7 +173,7 @@ function getEventBookingByUserID(userEmail) {
 function uploadPhoto(inputFile, userEmail) {
     const formData = new FormData();
     /* formData.append('inputFile', inputFile, "inputFile.img"); */
-    formData.append('inputFile', inputFile, userEmail);
+    formData.append('inputFile', inputFile, `${userEmail}.png`);
     const requestOption = {
         method: 'POST',
         body: formData,

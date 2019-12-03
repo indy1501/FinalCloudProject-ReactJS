@@ -16,8 +16,8 @@ class Events extends PureComponent {
         const eventURL = `/BookEvent/${this.props.eventData.event_id}`
         return (
 
-            <Card style={{ width: '22rem', marginTop: 20, marginBottom: 20 }}>
-                <Card.Img variant="top" src="holder.js/100px180" />
+            <Card style={{ width: '30rem', marginTop: 30, marginBottom: 30, paddingBottom:20, paddingTop:20}}>
+              
                 <Card.Body>
                     <Card.Title>{this.props.eventData.event_name.toUpperCase()}</Card.Title>
                     <h6>On {this.props.eventData.date} , {this.props.eventData.time}</h6>

@@ -14,6 +14,7 @@ class UserEventView extends PureComponent {
             userName: "Sneha",
             userEmail: "sneha",
             description: "User Credit Card",
+            cardMessage: "You have not uploaded the card yet",
             Event: "",
             city: "",
             last_key_business_id: "",
@@ -26,6 +27,7 @@ class UserEventView extends PureComponent {
         this.loadMore = this.loadMore.bind(this)
     }
     componentDidMount() {
+      
         eventService.getAll()
             .then(json => {
                 console.log(json);
@@ -86,7 +88,13 @@ class UserEventView extends PureComponent {
             this.storefiledata(jsonResponse.CreditCardNumber,jsonResponse.ExpiryDate, jsonResponse.Organization, jsonResponse.User, this.state.userEmail);
             this.deleteFile(jsonResponse.FileName);
             console.log(jsonResponse);
+
           }).catch (error => {
+            sessionStorage.setItem("cardMessage", "Card Upload failed")
+            let cardMessage = sessionStorage.getItem("cardMessage");
+            this.setState({
+                cardMessage : cardMessage
+            })
             console.log(error)
           })
     }
@@ -94,6 +102,11 @@ class UserEventView extends PureComponent {
     storefiledata(ccnumber, expirydate, org, user, email){
         fileServices.storefiledata(ccnumber, expirydate, org, user, email)
         .then(response => {
+            sessionStorage.setItem("cardMessage", "Card Uploaded Successfully")
+            let cardMessage = sessionStorage.getItem("cardMessage");
+            this.setState({
+                cardMessage : cardMessage
+            })
             console.log(response);
         });
     }
@@ -165,13 +178,13 @@ class UserEventView extends PureComponent {
                         </div>
                     </section>
                     <Row style={{ marginTop: 10 }}>
-                        <Col xl={7} style={{ border: "1px solid black", margin: 10, borderRadius: 5, marginLeft: 80, height: (window.innerHeight) - 250, overflowY: "scroll" }}>
+                        <Col xl={7} style={{ border: "1px solid black", margin: 10, borderRadius: 5, marginLeft: 80, height: (window.innerHeight) - 235, overflowY: "scroll" }}>
 
                             <Alert variant="primary" style={{ marginTop: 10 }}>
                                 <Alert.Heading>Events</Alert.Heading>
                             </Alert>
 
-                            <Row style={{ marginLeft: 0 }}>
+                            <Row style={{ marginLeft: 45 }}>
 
                                 {searchData && searchData.map(eventData => {
                                     return (
@@ -185,9 +198,9 @@ class UserEventView extends PureComponent {
                             </Row>
                         </Col>
                         <Col xl={4} >
-                            <Row style={{ border: "1px solid black", margin: 10, borderRadius: 5 }}>
+                            <Row style={{ border: "1px solid black", margin: 10, borderRadius: 5}}>
 
-                                <Card style={{ width: "100%" }}>
+                                <Card style={{ width: "100%", height: (window.innerHeight/2) - 250 }}>
                                     {/* <Card.Header as="h4">Card Details</Card.Header> */}
                                     <Alert variant="primary" style={{ margin: 10 }}>
                                         <Alert.Heading>Card Details</Alert.Heading>
@@ -200,13 +213,13 @@ class UserEventView extends PureComponent {
                                         </button>
                                     </Card.Body>
                                     <Card.Body>
-                                        <Card.Title>You have not uploaded the card yet</Card.Title>
+                                        <Card.Title>{this.state.cardMessage}</Card.Title>
                                     </Card.Body>
 
                                 </Card>
                             </Row>
                             <Row style={{ border: "1px solid black", margin: 10, borderRadius: 5 }}>
-                                <Card style={{ width: "100%" }}>
+                                <Card style={{ width: "100%", height: (window.innerHeight/2)  }}>
                                     <Alert variant="primary" style={{ margin: 10 }}>
                                         <Alert.Heading>ChatBot</Alert.Heading>
                                     </Alert>

@@ -3,6 +3,7 @@ import { Button, Card, Row, Col, Modal, Form } from 'react-bootstrap';
 import { eventService } from '../../services/EventService';
 import AttributeRender from '../AttributeRender';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 
 class RenderEvent extends PureComponent {
     constructor(props) {
@@ -14,7 +15,8 @@ class RenderEvent extends PureComponent {
             userEmail: "",
             ticketCount: "1",
             eventData: [],
-            modalShow: false
+            modalShow: false,
+            uploadPhoto: false,
         }
         this.bookEvent = this.bookEvent.bind(this)
     }
@@ -53,16 +55,17 @@ class RenderEvent extends PureComponent {
             ticketCount: tickets
         })
 
-        eventService.createEventBooking(this.state.eventId, this.state.eventData.event_name, this.state.eventData.location,this.state.eventData.date, this.state.ticketCount, this.state.userEmail)
+        eventService.createEventBooking(this.state.eventId, this.state.eventData.event_name, this.state.eventData.location, this.state.eventData.date, this.state.ticketCount, this.state.userEmail)
             /* console.log(this.state.eventId, this.state.eventData.event_name, this.state.eventData.location,
                 this.state.eventData.date, this.state.ticketCount, this.state.userEmail) */
             .then(json => {
                 console.log(json);
-                if (Array.isArray(json)) {
                     this.setState({
-                        eventData: json[0],
+                       
+                        uploadPhoto: true
                     });
-                }
+                    console.log(this.state.uploadPhoto)
+                
             })
             .catch(reason => {
                 console.log("Failed to fetch data from server, reason is : ", reason);
@@ -110,6 +113,9 @@ class RenderEvent extends PureComponent {
                                             onHide={(e) => this.setModalShow(false)}
                                             onBookEvent={this.bookEvent}></BookEventModal>
                                     </Card.Body>
+                                    {
+                                        this.state.uploadPhoto && <h5 className="text-center" style={{ marginTop: 10 }}><Link to="/CapturePhoto"> Upload your Photo Here</Link></h5>
+                                    }
 
                                 </Card>
                             </Col>
@@ -140,20 +146,21 @@ export const BookEventModal = ({ onBookEvent, ...props }) => {
             </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-               {/*  <textarea style={{ width: "100%", height: "300px", padding: 20 }} value={reviewText} onChange={e => setReviewText(e.target.value)}> </textarea> */}
+                {/*  <textarea style={{ width: "100%", height: "300px", padding: 20 }} value={reviewText} onChange={e => setReviewText(e.target.value)}> </textarea> */}
                 <Form>
                     <Form.Group as={Row} controlId="formPlaintexttickets">
                         <Form.Label column sm="3">
                             Number of Tickets :
                         </Form.Label>
                         <Col sm="4">
-                            <Form.Control  placeholder="Tickets" value={ticketText} onChange={e => setTicketText(e.target.value)}/>
+                            <Form.Control placeholder="Tickets" value={ticketText} onChange={e => setTicketText(e.target.value)} />
                         </Col>
                     </Form.Group>
                 </Form>
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="outline-success" onClick={e => onBookEvent(ticketText)}>Book</Button>
+
             </Modal.Footer>
         </Modal>
     );

@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react'
 import Camera from 'react-html5-camera-photo';
 import 'react-html5-camera-photo/build/css/index.css';
 import { eventService } from '../../services/EventService';
+import { Link } from 'react-router-dom';
 
 class CapturePhoto extends PureComponent {
     constructor(props) {
@@ -38,6 +39,9 @@ class CapturePhoto extends PureComponent {
     render() {
         return (
             <div>
+                <div style={{ margin: "30px" }}>
+                    <Link to="/UserEventView"> Go Back</Link>
+                </div>
                 <h3 className="text-center" style={{marginTop:30, color: "red"}}>Upload your image by using the camera button</h3>
                 <div className="App" style={{marginTop:30}}>
                     <Camera

@@ -51,7 +51,7 @@ class App extends Component {
           <Navbar.Collapse className="justify-content-end">
               <Navbar.Text style={{ fontSize: 18 }}>
                 Signed in as: {user &&
-                  <a href="#login">{this.state.user}</a>}
+                  <Link to="/UserBookings">{this.state.user}</Link>}
               </Navbar.Text>
               <Nav style={{ marginLeft:20}}>
                 {
