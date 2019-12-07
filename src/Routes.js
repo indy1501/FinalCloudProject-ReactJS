@@ -12,6 +12,7 @@ import UpdateEvent from "./EventBooking/AdminEventView/UpdateEvent";
 import CapturePhoto from "./EventBooking/UserEventView/CapturePhoto";
 import RenderEvent from "./EventBooking/UserEventView/RenderEvent";
 import UserBookings from "./EventBooking/UserEventView/UserBookings";
+import EventGate from "./EventBooking/EventGateView/EventGate";
 
 export default ({ childProps }) =>
   <Switch>
@@ -27,4 +28,5 @@ export default ({ childProps }) =>
     <AppliedRoute path="/BookEvent/:id" exact component={RenderEvent} props={childProps} />
     <AppliedRoute path="/CapturePhoto" exact component={CapturePhoto} props={childProps} />
     <AppliedRoute path="/UserBookings" exact component={UserBookings} props={childProps} />
+    <AppliedRoute path="/EventGateCamera" exact component={EventGate} props={childProps} />
   </Switch>;

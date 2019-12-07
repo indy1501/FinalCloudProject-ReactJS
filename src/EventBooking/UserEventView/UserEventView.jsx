@@ -11,8 +11,8 @@ class UserEventView extends PureComponent {
         super(props)
         this.file = null;
         this.state = {
-            userName: "Sneha",
-            userEmail: "sneha",
+            userName: "",
+            userEmail: "",
             description: "User Credit Card",
             cardMessage: "You have not uploaded the card yet",
             Event: "",
@@ -27,7 +27,13 @@ class UserEventView extends PureComponent {
         this.loadMore = this.loadMore.bind(this)
     }
     componentDidMount() {
-      
+        let userName = sessionStorage.getItem("userName");
+        let userEmail = sessionStorage.getItem("userEmail");
+        console.log("userName", userName, userEmail)
+        this.setState({
+            userEmail: userEmail,
+            userName: userName
+        })
         eventService.getAll()
             .then(json => {
                 console.log(json);

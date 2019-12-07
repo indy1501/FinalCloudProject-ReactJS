@@ -23,7 +23,8 @@
     "react-table": "^6.10.3",
     "redux": "^4.0.4",
     "redux-thunk": "^2.3.0",
-    "uuid": "^3.3.3"
+    "uuid": "^3.3.3",
+    "webpack": "^4.40.2"
   },
   "proxy": "http://filestorageapp-env.un6pdan2ef.us-east-2.elasticbeanstalk.com",
   "scripts": {

@@ -11,7 +11,8 @@ export const eventService = {
     deleteEvent,
     createEventBooking,
     getEventBookingByUserID,
-    uploadPhoto
+    uploadPhoto,
+    userCheckin
 }
 export const apiConfig = {
     endpointURL: "http://localhost:3001",
@@ -170,10 +171,11 @@ function getEventBookingByUserID(userEmail) {
         return res.json();
     })
 }
-function uploadPhoto(inputFile, userEmail) {
+function uploadPhoto(inputFile, userEmail, eventId) {
     const formData = new FormData();
     /* formData.append('inputFile', inputFile, "inputFile.img"); */
     formData.append('inputFile', inputFile, `${userEmail}.png`);
+    formData.append('eventId', eventId);
     const requestOption = {
         method: 'POST',
         body: formData,
@@ -181,6 +183,18 @@ function uploadPhoto(inputFile, userEmail) {
     }
     return fetch(`${apiConfig.endpointURL}/photoUpload/upload_photo`, requestOption).then(res => {
         console.log(res);
+        return res;
+    })
+}
+function userCheckin(tempFileName, eventId) {
+    
+    const requestOption = {
+        method: 'GET',
+        // headers: { "Content-Type": inputFile.type }
+    }
+    return fetch(`${apiConfig.endpointURL}/photoUpload/getFaceComparison?tempFileName=${tempFileName}&eventId=${eventId}`, requestOption).then(res => {
+        console.log(res);
+        
         return res;
     })
 }
