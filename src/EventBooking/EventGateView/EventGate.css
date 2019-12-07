@@ -1,0 +1,37 @@
+.elementRed {
+    animation: pulse1 1s infinite;
+  }
+  
+  @keyframes pulse1 {
+    0% {
+      background-color: rgb(117, 4, 4);
+    }
+    100% {
+      background-color: #FF4136;
+    }
+  }
+  #circleRed {
+    width: 100px;
+    height: 100px;
+    background: red;
+    border-radius: 50%
+  }
+
+  .elementGreen {
+    animation: pulse2 1s infinite;
+  }
+  
+  @keyframes pulse2 {
+    0% {
+      background-color: rgb(9, 90, 2);
+    }
+    100% {
+      background-color: green;
+    }
+  }
+  #circleGreen {
+    width: 100px;
+    height: 100px;
+    background: green;
+    border-radius: 50%
+  }

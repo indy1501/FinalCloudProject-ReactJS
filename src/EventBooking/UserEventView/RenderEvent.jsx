@@ -65,6 +65,7 @@ class RenderEvent extends PureComponent {
                         uploadPhoto: true
                     });
                     console.log(this.state.uploadPhoto)
+                    sessionStorage.setItem("BookedEventId", this.state.eventId)
                 
             })
             .catch(reason => {
@@ -83,7 +84,7 @@ class RenderEvent extends PureComponent {
                         <Row style={{ display: "block" }}>
                             <Col xl={{ span: 6, offset: 3 }} style={{ marginTop: "30px" }}>
                                 <Card style={{ marginTop: "20px" }} key={eventData.event_id}>
-                                    <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+                                   {/*  <Card.Img variant="top" src="holder.js/100px180?text=Image cap" /> */}
                                     <Card.Body>
                                         <h2>{eventData.event_name && eventData.event_name.toUpperCase()}</h2>
                                         <h4><a style={{ color: "blue" }}>Location :</a> {eventData.location}</h4>

@@ -3,6 +3,10 @@ import "./Home.css";
 import { Row, Col, Alert } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 class Home extends Component {
+  
+  componentDidMount(){
+    sessionStorage.setItem("userEmail", "")
+  }
   render() {
     return (
 

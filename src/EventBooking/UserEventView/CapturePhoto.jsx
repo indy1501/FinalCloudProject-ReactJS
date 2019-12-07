@@ -22,7 +22,8 @@ class CapturePhoto extends PureComponent {
                 // Upload
                 // fetch('upload', {method: 'POST', body: fd})
                 let userEmail = sessionStorage.getItem("userEmail")
-                eventService.uploadPhoto(blob,userEmail)
+                let eventId = sessionStorage.getItem("BookedEventId")
+                eventService.uploadPhoto(blob,userEmail,eventId)
                 .then(json => {
                     console.log(json);
                     this.setState({
