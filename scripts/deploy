@@ -4,6 +4,6 @@ ssh ubuntu@172.31.87.80 <<EOF
     git pull origin master
     npm install
     npm run build
-    la -l /usr/share/nginx/html 
+    ls -l /usr/share/nginx/html 
     exit
 EOF
