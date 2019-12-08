@@ -2,6 +2,7 @@
 ssh -T ubuntu@172.31.87.80 <<EOF
     cd ~/FinalCloudProject-ReactJS
     git pull origin master
+    git reset --hard
     npm install
     echo "Preparing for prod build"
     echo `hostname`
