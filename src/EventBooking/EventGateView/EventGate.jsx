@@ -77,7 +77,7 @@ class EventGate extends PureComponent {
             this.setState({
                 access: false
             })
-        }, 5000);
+        }, 10000);
 
     }
     getEvent(event) {
@@ -148,7 +148,7 @@ class EventGate extends PureComponent {
                         {
                             this.state.access &&
                             <div>
-                                <div id="circleGreen" className="elementGreen" style={{ marginLeft: 100, marginTop: 30 }}></div>
+                                <div id="circleGreen" className="elementGreen" style={{ marginLeft: 90, marginTop: 10 }}></div>
                                 <h5 style={{ color: "black" }}>Access</h5>
                             </div>
 
