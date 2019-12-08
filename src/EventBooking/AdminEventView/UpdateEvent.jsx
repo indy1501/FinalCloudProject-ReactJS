@@ -54,12 +54,12 @@ class UpdateEvent extends PureComponent {
                     state: json[0].state,
                     city: json[0].city,
                     postalCode: json[0].postal_code,
-                    /* garage: json[0].attributes["BusinessParking"].garage, */
+                    /* garage: json[0].attributes["BusinessParking"].garage, 
                     garage: false,
                     lot: false,
                     street: false,
                     valet: false,
-                    validated: false
+                    validated: false*/
                 });
             }
         })
@@ -197,17 +197,17 @@ class UpdateEvent extends PureComponent {
                                         finalSelected: tempArray
                                     })
                                 }}>
-                                    <option>Active Life</option>
-                                    <option>Hiking</option>
+                                   <option>Active Life</option>
+                                    <option>Football</option>
+                                    <option>Flower Exhibition</option>
+                                    <option>Music</option>
+                                    <option>Sports</option>
+                                    <option>Dance</option>
+                                    <option>Art</option>
+                                    <option>Game</option>
+                                    <option>Political</option>
+                                    <option>Entertain</option>
                                     <option>Golf</option>
-                                    <option>Fitness & Instruction</option>
-                                    <option>Cycling Classes</option>
-                                    <option>Yoga</option>
-                                    <option>Sporting Goods</option>
-                                    <option>Boot Camps</option>
-                                    <option>Cardio Classes</option>
-                                    <option>Boxing</option>
-                                    <option>Gymnastics</option>
                                     <option>Martial Arts</option>
                                 </Form.Control>
                             </Form.Group>

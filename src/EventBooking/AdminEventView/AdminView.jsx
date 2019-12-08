@@ -89,7 +89,7 @@ class AdminView extends PureComponent {
                             {
                                 userEventData && userEventData.map(value => {
                                     return (<Card style={{ marginTop: "20px" }} key={value.event_id}>
-                                        <Card.Img variant="top" src="holder.js/100px180?text=Image cap" />
+                                       {/*  <Card.Img variant="top" src="holder.js/100px180?text=Image cap" /> */}
                                         <Card.Body>
                                             <h2>{value.event_name}</h2>
                                             <h3>{value.location}</h3>

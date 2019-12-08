@@ -184,13 +184,13 @@ class UserEventView extends PureComponent {
                         </div>
                     </section>
                     <Row style={{ marginTop: 10 }}>
-                        <Col xl={7} style={{ border: "1px solid black", margin: 10, borderRadius: 5, marginLeft: 80, height: (window.innerHeight) - 225, overflowY: "scroll" }}>
+                        <Col xl={7} style={{ border: "1px solid black", margin: 10, borderRadius: 5, marginLeft: 80, height: (window.innerHeight) - 205, overflowY: "scroll" }}>
 
                             <Alert variant="primary" style={{ marginTop: 10 }}>
                                 <Alert.Heading>Events</Alert.Heading>
                             </Alert>
 
-                            <Row style={{ marginLeft: 45 }}>
+                            <Row style={{ marginLeft: 35 }}>
 
                                 {searchData && searchData.map(eventData => {
                                     return (
@@ -206,7 +206,7 @@ class UserEventView extends PureComponent {
                         <Col xl={4} >
                             <Row style={{ border: "1px solid black", margin: 10, borderRadius: 5}}>
 
-                                <Card style={{ width: "100%", height: (window.innerHeight/2) - 240 }}>
+                                <Card style={{ width: "100%", height: (window.innerHeight/2) - 280 }}>
                                     {/* <Card.Header as="h4">Card Details</Card.Header> */}
                                     <Alert variant="primary" style={{ margin: 10 }}>
                                         <Alert.Heading>Card Details</Alert.Heading>
@@ -217,15 +217,14 @@ class UserEventView extends PureComponent {
                                         <button variant="primary" className="btn btn-primary" style={{ fontSize: 15 }} type="button" onClick={this.handleSubmit}>
                                             Upload
                                         </button>
+                                        <Card.Text style={{ marginTop: 10 }}>{this.state.cardMessage}</Card.Text>
                                     </Card.Body>
-                                    <Card.Body>
-                                        <Card.Title>{this.state.cardMessage}</Card.Title>
-                                    </Card.Body>
+                                 
 
                                 </Card>
                             </Row>
                             <Row style={{ border: "1px solid black", margin: 10, borderRadius: 5 }}>
-                                <Card style={{ width: "100%", height: (window.innerHeight/2)+20  }}>
+                                <Card style={{ width: "100%", height: (window.innerHeight/2)+62  }}>
                                     <Alert variant="primary" style={{ margin: 10 }}>
                                         <Alert.Heading>ChatBot</Alert.Heading>
                                     </Alert>

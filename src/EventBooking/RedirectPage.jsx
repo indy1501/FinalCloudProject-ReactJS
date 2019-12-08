@@ -8,7 +8,7 @@ class RedirectPage extends PureComponent {
         super(props)
 
         this.state = {
-            isUserAdmin: false,
+            isUserAdmin: undefined,
             userName: "",
             userEmail: ""
         }
@@ -35,7 +35,15 @@ class RedirectPage extends PureComponent {
                         this.setState({
                             isUserAdmin: true
                         })
+                    } else {
+                        this.setState({
+                            isUserAdmin: false
+                        }) 
                     }
+                } else {
+                    this.setState({
+                        isUserAdmin: false
+                    }) 
                 }
             });
         }, function (err) {
@@ -48,11 +56,11 @@ class RedirectPage extends PureComponent {
         return (
             <Fragment>
                 {
-                    isUserAdmin &&
+                    isUserAdmin == true &&
                     <AdminView />
                 }
                 {
-                    !isUserAdmin &&
+                    isUserAdmin == false &&
                     <UserEventView />
                 }
 

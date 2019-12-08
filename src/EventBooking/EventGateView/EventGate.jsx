@@ -66,18 +66,18 @@ class EventGate extends PureComponent {
                     this.setState({
                         access: true
                     })
-                    console.log("access :"+this.state.access)
+                    console.log("access :" + this.state.access)
                 }
             })
             .catch(reason => {
                 console.log(reason);
             });
 
-            setTimeout(()=> {
-                this.setState({
-                    access: false
-                })
-              }, 5000);
+        setTimeout(() => {
+            this.setState({
+                access: false
+            })
+        }, 5000);
 
     }
     getEvent(event) {
@@ -105,7 +105,7 @@ class EventGate extends PureComponent {
     render() {
         return (
             <div>
-                <div style={{ margin: "30px" }}>
+                <div style={{ margin: "10px" }}>
                     <Link to="/UserEventView"> Go Back</Link>
                 </div>
                 <div className="text-center">
@@ -121,32 +121,40 @@ class EventGate extends PureComponent {
                         </Form.Group>
                     </Form>
                     {
-                        this.state.eventName && <h3 style={{ marginTop: 30, color: "red" }}>WelCome to {this.state.eventName.toUpperCase()}</h3>
+                        this.state.eventName && <h4 style={{ marginTop: 30, color: "red" }}>WelCome to {this.state.eventName.toUpperCase()}</h4>
                     }
 
                 </div>
 
-                <div className="App" style={{ marginTop: 30 }}>
+                <div className="App" style={{ marginTop: 10 }}>
                     <Camera
                         onTakePhoto={(dataUri) => { this.onTakePhoto(dataUri); }}
                     />
                     <h5 className="text-center" style={{ marginTop: 10 }}>{this.state.compareResult}</h5>
                     {
-                        this.state.compareResult && <h3 style={{ marginTop: 30, color: "red" }}> {this.state.compareResult}</h3>
+                        this.state.compareResult && <h3 style={{ marginTop: 10, color: "red" }}> {this.state.compareResult}</h3>
                     }
                 </div>
                 <div className="text-center" style={{ marginTop: "auto" }}>
                     <Col xl={{ span: 2, offset: 5 }}>
-                    {
-                        !this.state.access &&
-                        <div id="circleRed" className="elementRed" style={{ marginLeft: 110 , marginTop: 70}}></div>
-                    }
-                    {
-                        this.state.access &&
-                        <div id="circleGreen" className="elementGreen" style={{ marginLeft: 110 , marginTop: 70}}></div>
-                    }
+                        {
+                            !this.state.access &&
+                            <div>
+                                <div id="circleRed" className="elementRed" style={{ marginLeft: 90, marginTop: 10 }}></div>
+                                <h5 style={{ color: "black" }}>No Access</h5>
+                            </div>
+
+                        }
+                        {
+                            this.state.access &&
+                            <div>
+                                <div id="circleGreen" className="elementGreen" style={{ marginLeft: 100, marginTop: 30 }}></div>
+                                <h5 style={{ color: "black" }}>Access</h5>
+                            </div>
+
+                        }
                     </Col>
-                    
+
                 </div>
             </div>
         )

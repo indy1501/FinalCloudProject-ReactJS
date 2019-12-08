@@ -40,10 +40,10 @@ class UserBookings extends PureComponent {
                 <div style={{ margin: "30px" }}>
                     <Link to="/UserEventView"> Go Back</Link>
                 </div>
-                <h2 className="text-center" style={{marginTop:10}}>You have booked the following events</h2>
+                <h2 className="text-center" style={{marginTop:10, marginRight:80}}>You have booked the following events</h2>
                 {userEvents && userEvents.map(eventData => {
                     return (
-                        <Col xl={{ span: 4, offset: 4 }}>
+                        <Col xl={{ span: 3, offset: 4 }}>
                             
                             <Card style={{ width: '30rem', marginTop: 30, marginBottom: 30, paddingBottom: 20, paddingTop: 20 }}>
 

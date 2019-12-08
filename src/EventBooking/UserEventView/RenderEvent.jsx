@@ -79,6 +79,9 @@ class RenderEvent extends PureComponent {
         const { eventData } = this.state
         return (
             <div>
+                <div style={{ margin: "30px" }}>
+                    <Link to="/UserEventView"> Go Back</Link>
+                </div>
                 {
                     eventData && <div>
                         <Row style={{ display: "block" }}>

@@ -15,7 +15,7 @@ export const eventService = {
     userCheckin
 }
 export const apiConfig = {
-    endpointURL: "http://localhost:3001",
+    endpointURL: "https://eventsyncsvc.codeninjas.cf",
 }
 function getAll() {
     const requestOption = {
@@ -92,6 +92,7 @@ function createEvent(userEmail, name, location, categories, address, city, state
     })
 }
 function updateEvent(eventId, name, location, categories, address, city, state, postal_code, garage, street, validated, lot, valet, date, time) {
+    console.log(eventId, name, location, categories, address, city, state, postal_code, garage, street, validated, lot, valet, date, time)
     const requestOption = {
         method: 'PUT',
         body: JSON.stringify({

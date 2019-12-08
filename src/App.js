@@ -58,7 +58,7 @@ class App extends Component {
                 {
                   this.state.isUserLoggedIn
                     ? <Nav.Link onClick={this.onLogOut} style={{ fontSize: 18, color: "red" }}>Logout</Nav.Link>
-                    : (<Nav.Link href={cognitoUtils.getCognitoSignInUri()} style={{ fontSize: 18, color: "blue" }}>Log In</Nav.Link>)
+                    : (<Nav.Link href={cognitoUtils.getCognitoSignInUri()} style={{ fontSize: 18, color: "green" }}>Log In</Nav.Link>)
                 }
 
               </Nav>
