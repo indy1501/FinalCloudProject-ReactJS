@@ -162,7 +162,7 @@ class UserEventView extends PureComponent {
             <div>
 
                 <Container fluid>
-                    <section className="search-sec" style={{ marginTop: 20 }}>
+                    <section className="search-sec" style={{ marginTop: 10 }}>
                         <div className="container">
                             <form action="#" method="post" noValidate="novalidate">
                                 <div className="row">
@@ -184,7 +184,7 @@ class UserEventView extends PureComponent {
                         </div>
                     </section>
                     <Row style={{ marginTop: 10 }}>
-                        <Col xl={7} style={{ border: "1px solid black", margin: 10, borderRadius: 5, marginLeft: 80, height: (window.innerHeight) - 235, overflowY: "scroll" }}>
+                        <Col xl={7} style={{ border: "1px solid black", margin: 10, borderRadius: 5, marginLeft: 80, height: (window.innerHeight) - 225, overflowY: "scroll" }}>
 
                             <Alert variant="primary" style={{ marginTop: 10 }}>
                                 <Alert.Heading>Events</Alert.Heading>
@@ -206,12 +206,12 @@ class UserEventView extends PureComponent {
                         <Col xl={4} >
                             <Row style={{ border: "1px solid black", margin: 10, borderRadius: 5}}>
 
-                                <Card style={{ width: "100%", height: (window.innerHeight/2) - 250 }}>
+                                <Card style={{ width: "100%", height: (window.innerHeight/2) - 240 }}>
                                     {/* <Card.Header as="h4">Card Details</Card.Header> */}
                                     <Alert variant="primary" style={{ margin: 10 }}>
                                         <Alert.Heading>Card Details</Alert.Heading>
                                     </Alert>
-                                    <Card.Body style={{ fontSize: 20, marginTop: 20 }}>
+                                    <Card.Body style={{ fontSize: 20, marginTop: 10 }}>
 
                                         <input type="file" onChange={this.handleFileChange}></input>
                                         <button variant="primary" className="btn btn-primary" style={{ fontSize: 15 }} type="button" onClick={this.handleSubmit}>
@@ -225,7 +225,7 @@ class UserEventView extends PureComponent {
                                 </Card>
                             </Row>
                             <Row style={{ border: "1px solid black", margin: 10, borderRadius: 5 }}>
-                                <Card style={{ width: "100%", height: (window.innerHeight/2)  }}>
+                                <Card style={{ width: "100%", height: (window.innerHeight/2)+20  }}>
                                     <Alert variant="primary" style={{ margin: 10 }}>
                                         <Alert.Heading>ChatBot</Alert.Heading>
                                     </Alert>
