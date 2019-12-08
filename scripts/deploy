@@ -1,5 +1,5 @@
 #!/bin/sh
-ssh -T -i /home/ubuntu/SportifyKey.pem ubuntu@172.31.23.80 <<EOF
+ssh -i /tmp/SportifyKeyJenkins.pem ubuntu@172.31.23.80 <<EOF
     cd ~/FinalCloudProject-ReactJS
     git pull origin master
     git reset --hard
