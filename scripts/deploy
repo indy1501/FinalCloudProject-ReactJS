@@ -3,6 +3,7 @@ ssh ubuntu@172.31.87.80 <<EOF
     cd ~/FinalCloudProject-ReactJS
     git pull origin master
     npm install
-    pm2 restart ecosystem.config.js
+    npm run build
+    ls -l /usr/share/nginx/html 
     exit
 EOF
