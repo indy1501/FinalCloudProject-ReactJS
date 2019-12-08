@@ -3,7 +3,9 @@ ssh ubuntu@172.31.87.80 <<EOF
     cd ~/FinalCloudProject-ReactJS
     git pull origin master
     npm install
-    npm run build
-    ls -l /usr/share/nginx/html 
+    echo "Preparing for prod build"
+    echo `hostname`
+    npm run build | tee /home/ubuntu/deploy.logs
+    sudo systemctl reload nginx
     exit
 EOF
