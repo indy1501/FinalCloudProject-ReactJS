@@ -1,5 +1,5 @@
 #!/bin/sh
-ssh -T ubuntu@172.31.87.80 <<EOF
+ssh -T -i SportifyKey.pem ubuntu@172.31.23.80 <<EOF
     cd ~/FinalCloudProject-ReactJS
     git pull origin master
     git reset --hard
@@ -7,6 +7,9 @@ ssh -T ubuntu@172.31.87.80 <<EOF
     echo "Preparing for prod build"
     echo `hostname`
     npm run build | tee /home/ubuntu/deploy.logs
+    echo "Deploy Logs are stored on the server at path /home/ubuntu/deploy.logs"
+    echo "build is deployed with symbolic links to nginx web server, reloading nginx"
     sudo systemctl reload nginx
+    sudo systemctl status nginx
     exit
 EOF
