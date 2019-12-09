@@ -1,11 +1,11 @@
-# CMPE 281: cloudProject-1 EventSync
+# CMPE 281: cloudProject - EventSync
 *	University Name: San Jose State University http://www.sjsu.edu/ 
 *	Course: [Cloud Technologies](http://info.sjsu.edu/web-dbgen/catalog/courses/CMPE281.html)
 *	Professor: [Sanjay Garje](https://www.linkedin.com/in/sanjaygarje/)
 *	ISA: [Rajalakshmi Babu](https://www.linkedin.com/in/rajalakshmib/)
-*	Students: [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode)
-                      [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode)
-                      [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode)
+*	Students: [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode),
+                      [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode),
+                      [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode),
                       [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode)
 
 ### Project Introduction
@@ -52,15 +52,13 @@ Web Application: (https://eventsyncui.codeninjas.cf/)
 * Amazon Cognito: Create the userpool for users to sign up or sign in to the application using custom login/signup and social identity providers like google and facebook.
 
 ### Instructions to run project locally
-* Prerequisite Softwares: NodeJS, React
+* Prerequisite Softwares: React
 
 * Clone the code from git
 
 * Run npm install on both the NodeJS and React projects to install all the dependencies.
 
-* Create the .env file with AWS access key and secret in NodeJS project.
-
-* Run the NodeJS API using node src/app.js command.
+* Create the .env file with AWS access key and secret in ReactJS project.
 
 * Run the react app using npm start command.
 
