@@ -11,7 +11,7 @@ export const fileServices  = {
 
 function getFilesData(email) 
 {
-    return fetch(`${process.env.REACT_APP_endPointUrl}/users/`+ email)
+    return fetch(`https://eventsyncsvc.codeninjas.cf/users/`+ email)
     .then(response => {
         return response.json()
     })    
@@ -19,7 +19,7 @@ function getFilesData(email)
 
 function getFile(filename) 
 {
-    return fetch(`${process.env.REACT_APP_endPointUrl}/file/`+ filename)
+    return fetch(`https://eventsyncsvc.codeninjas.cf/file/`+ filename)
     .then(response => {
         return response.json()
     })    
@@ -28,7 +28,7 @@ function getFile(filename)
 function updateFileData(fileId){
     //var time = new Date().toDateString() + " " + new Date().toLocaleTimeString();
     
-    return fetch(`${process.env.REACT_APP_endPointUrl}/updatefiledata/`+fileId)
+    return fetch(`https://eventsyncsvc.codeninjas.cf/updatefiledata/`+fileId)
     .then(response => {
         return response.json()
     })
@@ -36,7 +36,7 @@ function updateFileData(fileId){
 
 function storefiledata(ccnumber, expirydate, org, user, email){
 
-    const url=`${process.env.REACT_APP_endPointUrl}/users/`+ email+`/card`;
+    const url=`https://eventsyncsvc.codeninjas.cf/users/`+ email+`/card`;
     return fetch(url, {
             method: 'Post',
             body: JSON.stringify({
@@ -52,7 +52,7 @@ function storefiledata(ccnumber, expirydate, org, user, email){
 }
 
 function deleteFile(fileName){
-    const url=`${process.env.REACT_APP_endPointUrl}/api/filedelete`;
+    const url=`https://eventsyncsvc.codeninjas.cf/api/filedelete`;
     return fetch(url, {
         method: 'Post',
         body: JSON.stringify({
@@ -67,7 +67,7 @@ function deleteFile(fileName){
 }
 
 function deleteFileData(fileId){
-    const url = `${process.env.REACT_APP_endPointUrl}/deletefiledata/` + fileId;
+    const url = `https://eventsyncsvc.codeninjas.cf/deletefiledata/` + fileId;
     return fetch(url, {
         method: 'delete'
         }).then(response =>{
