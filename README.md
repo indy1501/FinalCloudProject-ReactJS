@@ -67,6 +67,8 @@ Landing Page/Login
 ![home](https://user-images.githubusercontent.com/39228894/70471271-a89a2880-1a81-11ea-973d-31a99df508de.png)
 
 Sign In/ Sign Up page
+
+
 ![login](https://user-images.githubusercontent.com/39228894/70471435-0169c100-1a82-11ea-815b-cdc05235e7d3.png)
 
 User View
