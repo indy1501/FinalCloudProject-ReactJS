@@ -1,21 +1,26 @@
-# CMPE 281: cloudProject-1 DropBucket
+# CMPE 281: cloudProject-1 EventSync
 *	University Name: San Jose State University http://www.sjsu.edu/ 
 *	Course: [Cloud Technologies](http://info.sjsu.edu/web-dbgen/catalog/courses/CMPE281.html)
 *	Professor: [Sanjay Garje](https://www.linkedin.com/in/sanjaygarje/)
 *	ISA: [Rajalakshmi Babu](https://www.linkedin.com/in/rajalakshmib/)
 *	Students: [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode)
-            [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode)
+                      [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode)
+                      [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode)
+                      [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode)
 
 ### Project Introduction
-DropBucket, is a web application hosted on AWS cloud which provides authorized users a portal to maintain their files securely on cloud and enable users to upload, download, update and delete their files from any location. This project is the 3 tier web application using various AWS service resources. The application manages various components to provide a highly available, scalable, cost effective solution to securely back up data on to Amazon S3 and CloudFront. This application provides seamless experience during the peak load time by leveraging the AWS auto scaling functionality and also helps in managing EC2 instance health using Cloud Watch, AWS Lambda and SNS which are associated with the auto scale group.
+EventSync is a one stop platform for registered users to browse through all the available events like music, art or sports events. Registered users can view and post reviews about the available activities. EventSync will have two roles based on usage: the user and the admin. 
+The admin has authority to add, modify and delete events. Admin will also have an additional information in the form of Analysis charts, derived from the historical data of our application. 
+The user can browse through EventSync for activities of interest according to categories such as music, arts, sports etc. To improve on the user’s experience, ChatBot feature with the audio inputs will be provided to the user to book an event without going through the hassle of searching for one particular event from thousands of listed ones.
+
 
 ### Demo
-Youtube Video: [DropBucket Demo](https://www.youtube.com/watch?v=La5XdLTHq_o)
+Youtube Video: [EventSync Demo](https://www.youtube.com/watch?v=La5XdLTHq_o)
 
-Web Application: (https://rashmicsproject.ml/)
+Web Application: (https://eventsyncui.codeninjas.cf/)
 
 ### AWS Architecture of the project
-![CloudProject1](https://user-images.githubusercontent.com/39228894/67639369-262c1f80-f8ac-11e9-8f90-4edd92196087.jpg)
+![architecture](https://user-images.githubusercontent.com/39228894/70470847-d16dee00-1a80-11ea-8fac-dc4e90513c04.png
 
 ### AWS Components to be setup
 * EC2: Create the EC2 instance and install node js, nginx as web server. Clone the project from git repositories. Configure the nginx web server to route all /api request to node server and all other requests to react app. Create AMI of EC2 instance with the above configurations. Further EC2 instances will use this AMI when they will get spawned by Auto scaling policies.
@@ -60,11 +65,29 @@ Web Application: (https://rashmicsproject.ml/)
 * Run the react app using npm start command.
 
 ### Sample Screenshots
+Landing Page/Login
+![home](https://user-images.githubusercontent.com/39228894/70471271-a89a2880-1a81-11ea-973d-31a99df508de.png)
+
 Sign In/ Sign Up page
-![loginPage](https://user-images.githubusercontent.com/39228894/67639370-29271000-f8ac-11e9-897b-da883cf9ab00.png)
+![login](https://user-images.githubusercontent.com/39228894/70471435-0169c100-1a82-11ea-815b-cdc05235e7d3.png)
 
-Dashboard Page
-![userPage](https://user-images.githubusercontent.com/39228894/67639371-2c220080-f8ac-11e9-908d-414ffdf2ba58.png)
+User View
+![userview](https://user-images.githubusercontent.com/39228894/70471485-1cd4cc00-1a82-11ea-9972-8fb82fe1cd64.png)
 
-Admin Dashboard Page
-![adminPage](https://user-images.githubusercontent.com/39228894/67639368-20363e80-f8ac-11e9-9d52-3c97bb91edbd.png)
+![eventDetails](https://user-images.githubusercontent.com/39228894/70471589-56a5d280-1a82-11ea-8dbb-0cc0d1fc772e.png)
+
+![Bot'](https://user-images.githubusercontent.com/39228894/70471666-7f2dcc80-1a82-11ea-9a98-d9e3c49117d4.png)
+
+
+Admin View
+
+![admin](https://user-images.githubusercontent.com/39228894/70471523-2e1dd880-1a82-11ea-9eeb-ee8ae6b5205d.png)
+
+![create](https://user-images.githubusercontent.com/39228894/70471669-8359ea00-1a82-11ea-9501-af069215803f.png)
+
+![eventAdded](https://user-images.githubusercontent.com/39228894/70471648-76d59180-1a82-11ea-9cb2-a73bbde869a5.png)
+
+Event Gate View
+![eventgateView](https://user-images.githubusercontent.com/39228894/70471655-79d08200-1a82-11ea-84e7-a847679b803a.png)
+
+
