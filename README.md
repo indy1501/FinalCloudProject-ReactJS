@@ -20,7 +20,7 @@ Youtube Video: [EventSync Demo](https://www.youtube.com/watch?v=La5XdLTHq_o)
 Web Application: (https://eventsyncui.codeninjas.cf/)
 
 ### AWS Architecture of the project
-![architecture](https://user-images.githubusercontent.com/39228894/70470847-d16dee00-1a80-11ea-8fac-dc4e90513c04.png
+![architecture](https://user-images.githubusercontent.com/39228894/70470847-d16dee00-1a80-11ea-8fac-dc4e90513c04.png)
 
 ### AWS Components to be setup
 * EC2: Create the EC2 instance and install node js, nginx as web server. Clone the project from git repositories. Configure the nginx web server to route all /api request to node server and all other requests to react app. Create AMI of EC2 instance with the above configurations. Further EC2 instances will use this AMI when they will get spawned by Auto scaling policies.
