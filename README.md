@@ -3,9 +3,9 @@
 *	Course: [Cloud Technologies](http://info.sjsu.edu/web-dbgen/catalog/courses/CMPE281.html)
 *	Professor: [Sanjay Garje](https://www.linkedin.com/in/sanjaygarje/)
 *	ISA: [Rajalakshmi Babu](https://www.linkedin.com/in/rajalakshmib/)
-*	Students: [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode),
-                      [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode),
-                      [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode),
+*	Students: [Sneha Patil](http://www.linkedin.com/in/sneha-patil11),
+                      [Mayuri Bhise](https://www.linkedin.com/in/mayuri-bhise/),
+                      [Indrayani Bhalerao],
                       [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode)
 
 ### Project Introduction
