@@ -28,6 +28,7 @@ class App extends Component {
     e.preventDefault()
     cognitoUtils.signOutCognitoSession()
     sessionStorage.setItem("userEmail", "")
+    sessionStorage.setItem("userName", "")
   }
 
   render() {

@@ -136,7 +136,7 @@ class CreateEvent extends PureComponent {
                             </Form.Control.Feedback>
                             </Form.Group>
                             <Form.Group controlId="location">
-                                <Form.Label>Address</Form.Label>
+                                <Form.Label>Location</Form.Label>
                                 <Form.Control type="text" placeholder="Enter Location" value={this.state.location} onChange={this.updateLocation} />
                                 <Form.Control.Feedback type="invalid">
                                     Please provide a valid location.
@@ -222,7 +222,7 @@ class CreateEvent extends PureComponent {
                                     Please provide a valid postal code.
                             </Form.Control.Feedback>
                             </Form.Group>
-                            <Button variant="primary" type="submit" onClick={this.onSubmit}>
+                            <Button variant="primary" type="button" onClick={this.onSubmit}>
                                 Submit
                         </Button>
                         </Form>
