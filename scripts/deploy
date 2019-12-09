@@ -9,6 +9,7 @@ ssh -i /tmp/SportifyKeyJenkins.pem ubuntu@172.31.23.80 <<EOF
     npm run build | tee /home/ubuntu/deploy.logs
     echo "Deploy Logs are stored on the server at path /home/ubuntu/deploy.logs"
     echo "build is deployed with symbolic links to nginx web server, reloading nginx"
+    echo "sudo ln -s /home/ubuntu/FinalCloudProject-ReactJS/build/* /usr/share/nginx/html"
     sudo systemctl reload nginx
     sudo systemctl status nginx
     exit
