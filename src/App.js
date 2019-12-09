@@ -41,7 +41,7 @@ class App extends Component {
     return (
       <div >
         {
-          // <Navbar fluid collapseOnSelect style={{backgroundColor: "#85c1e9"}}>
+          //<Navbar fluid collapseOnSelect style={{backgroundColor: "#85c1e9"}}>
           <Navbar bg="dark" variant="dark">
             <Navbar.Brand as="h2">
               <Link to="/" style={{ fontSize: 30, color: "white" }}> EventSync</Link>
