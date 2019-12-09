@@ -19,6 +19,11 @@ Youtube Video: [EventSync Demo](https://www.youtube.com/watch?v=La5XdLTHq_o)
 
 Web Application: (https://eventsyncui.codeninjas.cf/)
 
+
+### Back End code
+(https://github.com/indy1501/FinalCloudProject-NodeJS)
+
+
 ### AWS Architecture of the project
 ![architecture](https://user-images.githubusercontent.com/39228894/70470847-d16dee00-1a80-11ea-8fac-dc4e90513c04.png)
 
@@ -64,13 +69,15 @@ User’s name and Organization is identified from the text recognised using Amaz
 * Amazon Cognito: Create the userpool for users to sign up or sign in to the application using custom login/signup and social identity providers like google and facebook.
 
 ### Instructions to run project locally
-* Prerequisite Softwares: React
+* Prerequisite Softwares: NodeJS, React
 
 * Clone the code from git
 
 * Run npm install on both the NodeJS and React projects to install all the dependencies.
 
-* Create the .env file with AWS access key and secret in ReactJS project.
+* Create the .env file with AWS access key and secret in NodeJS project.
+
+* Run the NodeJS API using node src/app.js command.
 
 * Run the react app using npm start command.
 
