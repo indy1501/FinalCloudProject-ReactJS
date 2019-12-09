@@ -23,6 +23,18 @@ Web Application: (https://eventsyncui.codeninjas.cf/)
 ![architecture](https://user-images.githubusercontent.com/39228894/70470847-d16dee00-1a80-11ea-8fac-dc4e90513c04.png)
 
 ### AWS Components to be setup
+* AWS Lex Bot:
+User experience and user engagement is improved by having event booking functionality through a conversational Bot.
+ 
+* Amazon Image Rekognition:
+User’s credit card image is scanned and information is retrieved to process final booking payment.
+
+* Amazon Facial Rekognition:
+Smart Event Check In Gateway scans the user’s image and cross check with the previously uploaded image. AWS rekognition compares the images and returns the result. Based on the allowed threshold of 95 %, Smart Gateway grants or deny access. 
+
+* Amazon Comprehend:
+User’s name and Organization is identified from the text recognised using Amazon Rekognition. 
+
 * EC2: Create the EC2 instance and install node js, nginx as web server. Clone the project from git repositories. Configure the nginx web server to route all /api request to node server and all other requests to react app. Create AMI of EC2 instance with the above configurations. Further EC2 instances will use this AMI when they will get spawned by Auto scaling policies.
 
 * AutoScaling Group: Configure the auto scaling policy to make the system highly-available and application that can scale to configured max instances with a desired instance of 1 and max instance of 2. You can change these configs anytime in the autoscaling policy based on the Params like CPU Util, network in out, data rates etc.
@@ -68,8 +80,8 @@ Landing Page/Login
 
 Sign In/ Sign Up page
 
+![login](https://user-images.githubusercontent.com/39228894/70475841-47c31e00-1a8a-11ea-85c3-331f10dbd888.png)
 
-![login](https://user-images.githubusercontent.com/39228894/70471435-0169c100-1a82-11ea-815b-cdc05235e7d3.png)
 
 User View
 ![userview](https://user-images.githubusercontent.com/39228894/70471485-1cd4cc00-1a82-11ea-9972-8fb82fe1cd64.png)
@@ -77,6 +89,8 @@ User View
 ![eventDetails](https://user-images.githubusercontent.com/39228894/70471589-56a5d280-1a82-11ea-8dbb-0cc0d1fc772e.png)
 
 ![Bot'](https://user-images.githubusercontent.com/39228894/70471666-7f2dcc80-1a82-11ea-9a98-d9e3c49117d4.png)
+
+![bot](https://user-images.githubusercontent.com/39228894/70475729-06327300-1a8a-11ea-9688-599525879f48.png)
 
 
 Admin View
