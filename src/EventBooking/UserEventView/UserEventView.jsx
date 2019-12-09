@@ -86,7 +86,7 @@ class UserEventView extends PureComponent {
         };
         delete options.headers['Content-Type'];
 
-        fetch(`${process.env.REACT_APP_endPointUrl}/api/fileupload`, options)
+        fetch(`https://eventsyncsvc.codeninjas.cf/api/fileupload`, options)
         .then(response => {
             return response.json();
           }).then(jsonResponse => {
