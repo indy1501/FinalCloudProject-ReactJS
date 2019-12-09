@@ -5,7 +5,7 @@
 *	ISA: [Rajalakshmi Babu](https://www.linkedin.com/in/rajalakshmib/)
 *	Students: [Sneha Patil](http://www.linkedin.com/in/sneha-patil11),
                       [Mayuri Bhise](https://www.linkedin.com/in/mayuri-bhise/),
-                      [Indrayani Bhalerao],
+                       Indrayani Bhalerao,
                       [Rashmi Sarode](https://www.linkedin.com/in/rashmisarode)
 
 ### Project Introduction
